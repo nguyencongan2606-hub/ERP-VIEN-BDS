@@ -1,0 +1,1109 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary);background:var(--color-background-tertiary)}
+#app{display:flex;flex-direction:column;min-height:700px}
+#hdr{height:52px;background:#0C447C;display:flex;align-items:center;padding:0 16px;gap:10px;flex-shrink:0}
+.logo-mark{width:32px;height:32px;background:#185FA5;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:500;flex-shrink:0}
+.logo-name{font-size:13px;font-weight:500;color:#fff}
+.logo-sub{font-size:10px;color:#85B7EB;display:block;margin-top:1px}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+.hdr-badge{font-size:11px;font-weight:500;border-radius:999px;padding:3px 9px;cursor:pointer;border:none}
+.hdr-user{font-size:12px;color:#B5D4F4;cursor:pointer;display:flex;align-items:center;gap:4px}
+#layout{display:flex;flex:1;overflow:hidden}
+#sb{width:220px;background:var(--color-background-primary);border-right:0.5px solid var(--color-border-tertiary);overflow-y:auto;flex-shrink:0}
+.ng{border-bottom:0.5px solid var(--color-border-tertiary)}
+.nl{font-size:10px;font-weight:500;color:var(--color-text-tertiary);padding:9px 14px 3px;text-transform:uppercase;letter-spacing:0.5px}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;font-size:12px;color:var(--color-text-secondary);border-left:2px solid transparent}
+.ni:hover{background:var(--color-background-secondary)}
+.ni.active{background:#E6F1FB;color:#0C447C;font-weight:500;border-left-color:#185FA5}
+.ni i{font-size:15px;width:16px;text-align:center}
+.nc{margin-left:auto;font-size:10px;padding:1px 6px;border-radius:999px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.nc.hot{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+#main{flex:1;overflow-y:auto;padding:14px}
+.pg{display:none}.pg.active{display:block}
+.pg-t{font-size:17px;font-weight:500;margin-bottom:2px}
+.pg-s{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:14px}
+.sc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px}
+.sl{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.sv{font-size:20px;font-weight:500}
+.ss{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.ss.up{color:#3B6D11}.ss.dn{color:#A32D2D}
+.card{background:var(--color-background-primary);border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);margin-bottom:12px}
+.ch{padding:10px 14px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ct{font-size:13px;font-weight:500}
+.ca{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.btn{font-size:12px;padding:5px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);cursor:pointer;color:var(--color-text-primary);background:transparent;display:inline-flex;align-items:center;gap:5px}
+.btn:hover{background:var(--color-background-secondary)}
+.btn.pr{background:#0C447C;color:#fff;border-color:#0C447C}
+.btn.pr:hover{background:#185FA5}
+.btn.sm{font-size:11px;padding:3px 8px}
+.btn.danger{background:#FCEBEB;color:#A32D2D;border-color:#F09595}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:7px 12px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);white-space:nowrap}
+td{padding:8px 12px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-background-secondary)}
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:999px;font-weight:500;white-space:nowrap}
+.bb{background:#E6F1FB;color:#0C447C}
+.bg{background:#EAF3DE;color:#27500A}
+.ba{background:#FAEEDA;color:#633806}
+.bc{background:#FAECE7;color:#712B13}
+.bp{background:#EEEDFE;color:#3C3489}
+.br{background:#FCEBEB;color:#791F1F}
+.bt{background:#E1F5EE;color:#085041}
+.bgr{background:#F1EFE8;color:#444441}
+.av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0}
+.avb{background:#E6F1FB;color:#0C447C}
+.avt{background:#E1F5EE;color:#085041}
+.avp{background:#EEEDFE;color:#3C3489}
+.ava{background:#FAEEDA;color:#633806}
+.avc{background:#FAECE7;color:#712B13}
+.avg{background:#EAF3DE;color:#27500A}
+.pbar{height:5px;background:var(--color-background-secondary);border-radius:999px;overflow:hidden;min-width:50px}
+.pf{height:100%;border-radius:999px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tl{padding:10px 14px}
+.tl-i{display:flex;gap:8px;margin-bottom:11px}
+.tl-d{width:7px;height:7px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.tl-t{font-size:12px;font-weight:500}
+.tl-m{font-size:11px;color:var(--color-text-secondary)}
+.fi{padding:6px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);font-size:12px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+.fi:focus{outline:none;border-color:#185FA5}
+.sb-inp{padding:5px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);font-size:12px;background:var(--color-background-primary);color:var(--color-text-primary)}
+.sb-inp:focus{outline:none;border-color:#185FA5}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pill{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;padding:3px 10px;font-size:12px}
+.lnk{color:#185FA5;cursor:pointer;font-size:12px}
+.lnk:hover{text-decoration:underline}
+.mono{font-family:var(--font-mono);font-size:11px;color:var(--color-text-secondary)}
+.dp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.dp-l{font-size:11px;color:var(--color-text-secondary)}
+.dp-v{font-size:13px;font-weight:500;margin-top:2px}
+.det-card{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:14px;margin-top:12px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fl{font-size:11px;color:var(--color-text-secondary)}
+.m-wrap{min-height:400px;background:rgba(0,0,0,0.4);display:none;align-items:flex-start;justify-content:center;padding-top:40px}
+.m-wrap.show{display:flex}
+.modal{background:var(--color-background-primary);border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-secondary);padding:18px;width:490px;max-width:95vw;max-height:78vh;overflow-y:auto}
+.mt{font-size:14px;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.mf{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.info-box{background:var(--color-background-info);border:0.5px solid var(--color-border-info);border-radius:var(--border-radius-lg);padding:14px;max-width:560px}
+.warn-box{background:#FAEEDA;border:0.5px solid #EF9F27;border-radius:var(--border-radius-lg);padding:12px;font-size:12px;color:#633806;margin-bottom:12px}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Hệ thống quản lý nội bộ Viện Nghiên Cứu và Đào Tạo Bất Động Sản VRETI IMS v3</h2>
+
+<script>
+const DB={
+branches:[
+  {id:'B01',name:'CS1 – TP.HCM',city:'TP.HCM',addr:'18 Lê Thánh Tôn, Q.1',head:'Phạm Văn Đức',tel:'028-3822-1234',email:'cs1.hcm@vreti.edu.vn',status:'Hoạt động',rooms:4},
+  {id:'B02',name:'CS2 – TP.HCM',city:'TP.HCM',addr:'45 Đinh Tiên Hoàng, Q.BT',head:'Nguyễn Thị Thu',tel:'028-3899-5678',email:'cs2.hcm@vreti.edu.vn',status:'Hoạt động',rooms:3},
+  {id:'B03',name:'CS1 – Hà Nội',city:'Hà Nội',addr:'12 Tràng Thi, Hoàn Kiếm',head:'Lê Văn Long',tel:'024-3936-2211',email:'cs1.hn@vreti.edu.vn',status:'Hoạt động',rooms:4},
+  {id:'B04',name:'CS2 – Hà Nội',city:'Hà Nội',addr:'78 Nguyễn Chí Thanh, Đống Đa',head:'Trần Thị Mai',tel:'024-3775-4422',email:'cs2.hn@vreti.edu.vn',status:'Hoạt động',rooms:2},
+  {id:'B05',name:'Đà Nẵng',city:'Đà Nẵng',addr:'22 Phan Chu Trinh, Hải Châu',head:'Võ Quang Hải',tel:'0236-382-9900',email:'danang@vreti.edu.vn',status:'Hoạt động',rooms:2},
+  {id:'B06',name:'Bình Dương',city:'Bình Dương',addr:'9 Lê Hồng Phong, TDM',head:'Đặng Văn Kỳ',tel:'0274-382-1100',email:'binhduong@vreti.edu.vn',status:'Hoạt động',rooms:2},
+  {id:'B07',name:'Cần Thơ',city:'Cần Thơ',addr:'5 Lý Tự Trọng, Ninh Kiều',head:'Nguyễn Văn Bình',tel:'0292-381-7700',email:'cantho@vreti.edu.vn',status:'Hoạt động',rooms:2},
+  {id:'B08',name:'Hải Phòng',city:'Hải Phòng',addr:'34 Điện Biên Phủ, Lê Chân',head:'Bùi Thị Hà',tel:'0225-382-3300',email:'haiphong@vreti.edu.vn',status:'Thử nghiệm',rooms:1},
+  {id:'B09',name:'Đồng Nai',city:'Đồng Nai',addr:'67 Phạm Văn Thuận, Biên Hoà',head:'Lê Minh Tú',tel:'0251-382-0011',email:'dongnai@vreti.edu.vn',status:'Sắp mở',rooms:0},
+],
+staff:[
+  {id:'NV001',name:'Nguyễn Văn Khoa',dept:'BGĐ',role:'Viện trưởng',degree:'GS.TS',spec:'Quản trị BĐS',type:'Biên chế',phone:'0901-111-222',email:'nv.khoa@vreti.edu.vn',salary:45000000,status:'Hoạt động',av:'NK',avc:'avb',joinDate:'01/01/2015'},
+  {id:'NV002',name:'Lê Thị Minh',dept:'BGĐ',role:'P.Viện trưởng',degree:'PGS.TS',spec:'Đào tạo',type:'Biên chế',phone:'0902-222-333',email:'lt.minh@vreti.edu.vn',salary:38000000,status:'Hoạt động',av:'LM',avc:'avt',joinDate:'01/03/2016'},
+  {id:'NV003',name:'Trần Hùng',dept:'P.Đào tạo',role:'Trưởng phòng',degree:'Th.S',spec:'Môi giới BĐS',type:'Biên chế',phone:'0903-333-444',email:'t.hung@vreti.edu.vn',salary:22000000,status:'Hoạt động',av:'TH',avc:'avp',joinDate:'01/06/2018'},
+  {id:'NV004',name:'Phạm Quốc Đạt',dept:'P.Đào tạo',role:'Giảng viên',degree:'TS',spec:'Đầu tư BĐS',type:'Cơ hữu',phone:'0904-444-555',email:'pq.dat@vreti.edu.vn',salary:28000000,status:'Hoạt động',av:'PD',avc:'ava',joinDate:'01/09/2019'},
+  {id:'NV005',name:'Nguyễn Phú Cường',dept:'P.Đào tạo',role:'Giảng viên',degree:'TS',spec:'Định giá BĐS',type:'Cơ hữu',phone:'0905-555-666',email:'np.cuong@vreti.edu.vn',salary:26000000,status:'Hoạt động',av:'NC',avc:'avc',joinDate:'01/03/2020'},
+  {id:'NV006',name:'Lê Thu Hương',dept:'P.HC-NS',role:'Trưởng phòng',degree:'Th.S',spec:'Hành chính',type:'Biên chế',phone:'0906-666-777',email:'lt.huong@vreti.edu.vn',salary:18000000,status:'Hoạt động',av:'LH',avc:'avg',joinDate:'01/01/2017'},
+  {id:'NV007',name:'Võ Văn Nam',dept:'P.Tài chính',role:'KT trưởng',degree:'Th.S',spec:'Kế toán',type:'Biên chế',phone:'0907-777-888',email:'vv.nam@vreti.edu.vn',salary:20000000,status:'Hoạt động',av:'VN',avc:'avb',joinDate:'01/04/2017'},
+  {id:'NV008',name:'Đặng Thị Lan',dept:'P.Khảo thí',role:'Trưởng phòng',degree:'Th.S',spec:'Quản lý thi & CC',type:'Biên chế',phone:'0908-888-999',email:'dt.lan@vreti.edu.vn',salary:17000000,status:'Hoạt động',av:'DL',avc:'avt',joinDate:'01/06/2018'},
+  {id:'NV009',name:'Bùi Quang Minh',dept:'P.Nghiên cứu',role:'Trưởng phòng',degree:'TS',spec:'Thị trường BĐS',type:'Cơ hữu',phone:'0909-999-000',email:'bq.minh@vreti.edu.vn',salary:25000000,status:'Hoạt động',av:'BM',avc:'avp',joinDate:'01/09/2020'},
+  {id:'NV010',name:'Vũ Thị Hoa',dept:'P.Đào tạo',role:'Giảng viên',degree:'Th.S',spec:'Luật BĐS',type:'Thỉnh giảng',phone:'0910-000-111',email:'vt.hoa@vreti.edu.vn',salary:0,status:'Hoạt động',av:'VH',avc:'ava',joinDate:'01/01/2022'},
+  {id:'NV011',name:'Hoàng Văn Tùng',dept:'P.Đào tạo',role:'Giảng viên',degree:'Th.S',spec:'Môi giới BĐS',type:'Thỉnh giảng',phone:'0911-111-222',email:'hv.tung@vreti.edu.vn',salary:0,status:'Hoạt động',av:'HT',avc:'avc',joinDate:'01/06/2022'},
+  {id:'NV012',name:'Phan Thị Ngọc',dept:'P.HC-NS',role:'Chuyên viên',degree:'ĐH',spec:'Nhân sự',type:'Biên chế',phone:'0912-222-333',email:'pt.ngoc@vreti.edu.vn',salary:13000000,status:'Hoạt động',av:'PN',avc:'avg',joinDate:'01/03/2021'},
+  {id:'NV013',name:'Đinh Văn Sơn',dept:'P.Tài chính',role:'Kế toán viên',degree:'ĐH',spec:'Kế toán',type:'Biên chế',phone:'0913-333-444',email:'dv.son@vreti.edu.vn',salary:14000000,status:'Hoạt động',av:'DS',avc:'avb',joinDate:'01/07/2021'},
+  {id:'NV014',name:'Cao Thị Thanh',dept:'P.Khảo thí',role:'Chuyên viên',degree:'ĐH',spec:'Khảo thí',type:'Biên chế',phone:'0914-444-555',email:'ct.thanh@vreti.edu.vn',salary:13500000,status:'Hoạt động',av:'CT',avc:'avt',joinDate:'01/09/2022'},
+  {id:'NV015',name:'Ngô Minh Khải',dept:'P.Nghiên cứu',role:'Nghiên cứu viên',degree:'Th.S',spec:'Phân tích BĐS',type:'Cơ hữu',phone:'0915-555-666',email:'nm.khai@vreti.edu.vn',salary:19000000,status:'Hoạt động',av:'NK',avc:'avp',joinDate:'01/01/2023'},
+],
+courses:[
+  {id:'K15-HCM',name:'Môi giới BĐS cơ bản – K15',branch:'B01',city:'TP.HCM',hours:60,max:50,fee:8500000,teacher:'NV003',start:'03/03/2025',end:'12/05/2025',status:'Đang học',enrolled:42},
+  {id:'K8-HN',name:'Chứng chỉ hành nghề MG – K8',branch:'B03',city:'Hà Nội',hours:80,max:40,fee:9200000,teacher:'NV004',start:'10/03/2025',end:'26/05/2025',status:'Đang học',enrolled:38},
+  {id:'K3-DN',name:'Định giá bất động sản – K3',branch:'B05',city:'Đà Nẵng',hours:40,max:35,fee:7800000,teacher:'NV005',start:'17/03/2025',end:'05/05/2025',status:'Đang học',enrolled:29},
+  {id:'K2-CT',name:'Quản lý vận hành BĐS – K2',branch:'B07',city:'Cần Thơ',hours:50,max:30,fee:8000000,teacher:'NV010',start:'24/03/2025',end:'19/05/2025',status:'Đang học',enrolled:25},
+  {id:'K5-BD',name:'Đầu tư & Phân tích BĐS – K5',branch:'B06',city:'Bình Dương',hours:70,max:40,fee:10500000,teacher:'NV004',start:'31/03/2025',end:'09/06/2025',status:'Đang học',enrolled:33},
+  {id:'K16-HCM',name:'Môi giới BĐS nâng cao – K16',branch:'B01',city:'TP.HCM',hours:80,max:50,fee:11000000,teacher:'NV003',start:'05/05/2025',end:'14/07/2025',status:'Đang học',enrolled:45},
+  {id:'K9-HN',name:'Luật kinh doanh BĐS – K9',branch:'B04',city:'Hà Nội',hours:40,max:40,fee:7500000,teacher:'NV010',start:'12/05/2025',end:'23/06/2025',status:'Sắp khai giảng',enrolled:32},
+  {id:'K10-HN',name:'CC hành nghề MG – K10',branch:'B03',city:'Hà Nội',hours:80,max:40,fee:9200000,teacher:'NV003',start:'26/05/2025',end:'11/08/2025',status:'Đang tuyển sinh',enrolled:18},
+  {id:'K4-DN',name:'Định giá BĐS – K4',branch:'B05',city:'Đà Nẵng',hours:40,max:35,fee:7800000,teacher:'NV005',start:'19/05/2025',end:'07/07/2025',status:'Đang tuyển sinh',enrolled:7},
+  {id:'K14-HCM',name:'Môi giới BĐS cơ bản – K14',branch:'B02',city:'TP.HCM',hours:60,max:50,fee:8500000,teacher:'NV011',start:'06/01/2025',end:'17/03/2025',status:'Hoàn thành',enrolled:48},
+  {id:'K7-HN',name:'CC hành nghề MG – K7',branch:'B03',city:'Hà Nội',hours:80,max:40,fee:9200000,teacher:'NV004',start:'13/01/2025',end:'31/03/2025',status:'Hoàn thành',enrolled:37},
+],
+students:[
+  {id:'HV2025001',name:'Nguyễn Thị Lan',dob:'15/03/1990',cccd:'079090001234',phone:'0901-234-567',email:'nt.lan@gmail.com',city:'TP.HCM',course:'K15-HCM',fee:8500000,paid:8500000,status:'Đang học',certId:null,score:null,av:'NL',avc:'avb',partner:'ĐT001'},
+  {id:'HV2025002',name:'Trần Văn Minh',dob:'22/07/1988',cccd:'001088002345',phone:'0902-345-678',email:'tv.minh@gmail.com',city:'Hà Nội',course:'K8-HN',fee:9200000,paid:4600000,status:'Đang học',certId:null,score:null,av:'TM',avc:'avt',partner:null},
+  {id:'HV2025003',name:'Lê Hoàng Nam',dob:'08/11/1992',cccd:'079092003456',phone:'0903-456-789',email:'lh.nam@gmail.com',city:'TP.HCM',course:'K14-HCM',fee:8500000,paid:8500000,status:'Tốt nghiệp',certId:'CC001',score:8.5,av:'LN',avc:'avp',partner:'ĐT002'},
+  {id:'HV2025004',name:'Phạm Thị Hoa',dob:'30/05/1995',cccd:'048095004567',phone:'0904-567-890',email:'pt.hoa@gmail.com',city:'Đà Nẵng',course:'K3-DN',fee:7800000,paid:7800000,status:'Đang học',certId:null,score:null,av:'PH',avc:'ava',partner:null},
+  {id:'HV2025005',name:'Đặng Quốc Tuấn',dob:'12/09/1987',cccd:'074087005678',phone:'0905-678-901',email:'dq.tuan@gmail.com',city:'Bình Dương',course:'K5-BD',fee:10500000,paid:10500000,status:'Đang học',certId:null,score:null,av:'DT',avc:'avc',partner:'ĐT001'},
+  {id:'HV2025006',name:'Võ Thị Kim',dob:'25/01/1993',cccd:'079093006789',phone:'0906-789-012',email:'vt.kim@gmail.com',city:'TP.HCM',course:'K14-HCM',fee:8500000,paid:8500000,status:'Tốt nghiệp',certId:'CC002',score:9.2,av:'VK',avc:'avg',partner:null},
+  {id:'HV2025007',name:'Bùi Văn Hải',dob:'03/04/1989',cccd:'001089007890',phone:'0907-890-123',email:'bv.hai@gmail.com',city:'Hà Nội',course:'K8-HN',fee:9200000,paid:0,status:'Bảo lưu',certId:null,score:null,av:'BH',avc:'avb',partner:null},
+  {id:'HV2025008',name:'Hoàng Thị Xuân',dob:'17/06/1991',cccd:'031091008901',phone:'0908-901-234',email:'ht.xuan@gmail.com',city:'Hải Phòng',course:'K8-HN',fee:9200000,paid:9200000,status:'Đang học',certId:null,score:null,av:'HX',avc:'avt',partner:null},
+  {id:'HV2025009',name:'Lý Văn Phúc',dob:'29/08/1994',cccd:'092094009012',phone:'0909-012-345',email:'lv.phuc@gmail.com',city:'Cần Thơ',course:'K2-CT',fee:8000000,paid:4000000,status:'Đang học',certId:null,score:null,av:'LP',avc:'avp',partner:'ĐT003'},
+  {id:'HV2025010',name:'Đinh Thị Ngân',dob:'11/12/1990',cccd:'048090010123',phone:'0910-123-456',email:'dt.ngan@gmail.com',city:'Bình Dương',course:'K5-BD',fee:10500000,paid:10500000,status:'Đang học',certId:null,score:null,av:'DN',avc:'ava',partner:null},
+  {id:'HV2025011',name:'Ngô Văn Cường',dob:'05/02/1986',cccd:'001086011234',phone:'0911-234-567',email:'nv.cuong@gmail.com',city:'Hà Nội',course:'K7-HN',fee:9200000,paid:9200000,status:'Tốt nghiệp',certId:'CC003',score:7.8,av:'NC',avc:'avc',partner:'ĐT002'},
+  {id:'HV2025012',name:'Trịnh Thị Mai',dob:'19/10/1993',cccd:'079093012345',phone:'0912-345-678',email:'tt.mai@gmail.com',city:'TP.HCM',course:'K15-HCM',fee:8500000,paid:8500000,status:'Đang học',certId:null,score:null,av:'TM',avc:'avg',partner:null},
+  {id:'HV2025013',name:'Phan Đức Khoa',dob:'07/07/1988',cccd:'064088013456',phone:'0913-456-789',email:'pd.khoa@gmail.com',city:'Đồng Nai',course:'K14-HCM',fee:8500000,paid:8500000,status:'Tốt nghiệp',certId:'CC004',score:8.0,av:'PK',avc:'avb',partner:'ĐT001'},
+  {id:'HV2025014',name:'Lưu Thị Bích',dob:'23/03/1996',cccd:'064096014567',phone:'0914-567-890',email:'lt.bich@gmail.com',city:'Đồng Nai',course:'K5-BD',fee:10500000,paid:5250000,status:'Đang học',certId:null,score:null,av:'LB',avc:'avt',partner:null},
+  {id:'HV2025015',name:'Cao Văn Đức',dob:'14/05/1985',cccd:'074085015678',phone:'0915-678-901',email:'cv.duc@gmail.com',city:'Bình Dương',course:'K7-HN',fee:9200000,paid:9200000,status:'Tốt nghiệp',certId:'CC005',score:8.8,av:'CD',avc:'avp',partner:'ĐT002'},
+  {id:'HV2025016',name:'Vũ Thị Hằng',dob:'09/08/1992',cccd:'079092016789',phone:'0916-789-012',email:'vt.hang@gmail.com',city:'TP.HCM',course:'K16-HCM',fee:11000000,paid:11000000,status:'Đang học',certId:null,score:null,av:'VH',avc:'ava',partner:null},
+  {id:'HV2025017',name:'Đỗ Quang Vinh',dob:'28/12/1990',cccd:'001090017890',phone:'0917-890-123',email:'dq.vinh@gmail.com',city:'Hà Nội',course:'K9-HN',fee:7500000,paid:3750000,status:'Đang học',certId:null,score:null,av:'DV',avc:'avc',partner:null},
+  {id:'HV2025018',name:'Lê Thị Phương',dob:'14/04/1994',cccd:'048094018901',phone:'0918-901-234',email:'lt.phuong@gmail.com',city:'Cần Thơ',course:'K2-CT',fee:8000000,paid:8000000,status:'Đang học',certId:null,score:null,av:'LP',avc:'avg',partner:'ĐT003'},
+],
+certs:[
+  {id:'CC001',studentId:'HV2025003',no:'CC-2025-HCM-0841',date:'02/05/2025',expire:'02/05/2028',city:'TP.HCM',status:'Đã cấp',issuerId:'NV001'},
+  {id:'CC002',studentId:'HV2025006',no:'CC-2025-HCM-0842',date:'02/05/2025',expire:'02/05/2028',city:'TP.HCM',status:'Đã cấp',issuerId:'NV001'},
+  {id:'CC003',studentId:'HV2025011',no:'CC-2025-HN-0312',date:'04/05/2025',expire:'04/05/2028',city:'Hà Nội',status:'Đã cấp',issuerId:'NV001'},
+  {id:'CC004',studentId:'HV2025013',no:'CC-2025-HCM-0843',date:'02/05/2025',expire:'02/05/2028',city:'TP.HCM',status:'Đã cấp',issuerId:'NV001'},
+  {id:'CC005',studentId:'HV2025015',no:'CC-2025-BD-0089',date:'04/05/2025',expire:'04/05/2028',city:'Bình Dương',status:'Đã cấp',issuerId:'NV001'},
+],
+exams:[
+  {id:'EX001',date:'08/05/2025',courseId:'K15-HCM',type:'Kết thúc khoá',room:'P.201 – CS1 HCM',count:42,examinerId:'NV008',status:'Đã lên lịch',passRate:null},
+  {id:'EX002',date:'10/05/2025',courseId:'K8-HN',type:'Kết thúc khoá',room:'P.101 – CS HN',count:38,examinerId:'NV008',status:'Đã lên lịch',passRate:null},
+  {id:'EX003',date:'15/05/2025',courseId:'K3-DN',type:'Giữa khoá',room:'P.102 – ĐN',count:29,examinerId:'NV014',status:'Đã lên lịch',passRate:null},
+  {id:'EX004',date:'20/05/2025',courseId:'K2-CT',type:'Kết thúc khoá',room:'P.201 – CT',count:25,examinerId:'NV014',status:'Chờ xác nhận',passRate:null},
+  {id:'EX005',date:'25/05/2025',courseId:'K5-BD',type:'Giữa khoá',room:'P.101 – BD',count:33,examinerId:'NV008',status:'Chờ xác nhận',passRate:null},
+  {id:'EX006',date:'02/04/2025',courseId:'K14-HCM',type:'Kết thúc khoá',room:'P.201 – CS1 HCM',count:48,examinerId:'NV008',status:'Hoàn thành',passRate:93},
+  {id:'EX007',date:'28/03/2025',courseId:'K7-HN',type:'Kết thúc khoá',room:'P.101 – CS HN',count:37,examinerId:'NV014',status:'Hoàn thành',passRate:89},
+],
+txns:[
+  {id:'PT001',date:'05/05/2025',type:'Thu',cat:'Học phí',desc:'HP K16-HCM – 10 HV',amount:110000000,ref:'K16-HCM',status:'Đã xác nhận'},
+  {id:'PT002',date:'04/05/2025',type:'Thu',cat:'Học phí',desc:'HP K15-HCM – đợt 2',amount:85000000,ref:'K15-HCM',status:'Đã xác nhận'},
+  {id:'PT003',date:'04/05/2025',type:'Thu',cat:'Phí CC',desc:'Phí cấp CC – 5 chứng chỉ',amount:7500000,ref:'P.Khảo thí',status:'Đã xác nhận'},
+  {id:'PT004',date:'03/05/2025',type:'Chi',cat:'Lương',desc:'Lương CB–GV T4/2025',amount:145000000,ref:'P.HC-NS',status:'Đã thực hiện'},
+  {id:'PT005',date:'03/05/2025',type:'Thu',cat:'Học phí',desc:'HP K8-HN – 8 HV',amount:73600000,ref:'K8-HN',status:'Đã xác nhận'},
+  {id:'PT006',date:'02/05/2025',type:'Chi',cat:'Cơ sở',desc:'Thuê phòng T5 – CS1+CS2 HCM',amount:48000000,ref:'B01',status:'Đã thực hiện'},
+  {id:'PT007',date:'02/05/2025',type:'Chi',cat:'In ấn',desc:'In tài liệu K16-HCM + K9-HN',amount:15000000,ref:'P.Đào tạo',status:'Đã thực hiện'},
+  {id:'PT008',date:'01/05/2025',type:'Thu',cat:'Học phí',desc:'HP K5-BD – 7 HV',amount:73500000,ref:'K5-BD',status:'Đã xác nhận'},
+  {id:'PT009',date:'01/05/2025',type:'Chi',cat:'Marketing',desc:'Quảng cáo khai giảng K16+K9',amount:22000000,ref:'Marketing',status:'Chờ duyệt'},
+  {id:'PT010',date:'30/04/2025',type:'Chi',cat:'Lương GV thỉnh',desc:'Thù lao GV thỉnh giảng T4',amount:18000000,ref:'P.Đào tạo',status:'Đã thực hiện'},
+],
+partners:[
+  {id:'ĐT001',name:'Tập đoàn Vinhomes',type:'Chủ đầu tư',city:'Toàn quốc',contact:'Nguyễn Minh',phone:'0901-VIN-xxx',refStudents:3,deal:'8% hoa hồng',status:'Đang hợp tác'},
+  {id:'ĐT002',name:'HOREII – Hội Môi giới VN',type:'Hiệp hội',city:'Toàn quốc',contact:'Lê Hùng',phone:'024-39xx-xxxx',refStudents:3,deal:'Đối tác chiến lược',status:'Đang hợp tác'},
+  {id:'ĐT003',name:'Sàn GD BĐS Thành Đô',type:'Sàn GD',city:'Cần Thơ',contact:'Trần Bình',phone:'0292-xxx-xxx',refStudents:2,deal:'10% hoa hồng',status:'Đang hợp tác'},
+  {id:'ĐT004',name:'ĐH Kinh tế TP.HCM',type:'Trường ĐH',city:'TP.HCM',contact:'PGS Lan',phone:'028-3xx-xxxx',refStudents:0,deal:'Liên kết đào tạo',status:'Đang hợp tác'},
+  {id:'ĐT005',name:'Sở Xây dựng TP.HCM',type:'Cơ quan NN',city:'TP.HCM',contact:'Vụ QLBĐS',phone:'028-3xx-xxxx',refStudents:0,deal:'Chỉ định đào tạo',status:'Đang hợp tác'},
+  {id:'ĐT006',name:'Batdongsan.com.vn',type:'Nền tảng TT',city:'Toàn quốc',contact:'Phòng MKT',phone:'024-3xx-xxxx',refStudents:0,deal:'Quảng cáo',status:'Đang hợp tác'},
+],
+research:[
+  {id:'NC001',title:'Thị trường BĐS nhà ở TP.HCM sau dịch 2023–2025',leadId:'NV001',level:'Viện',budget:180000000,start:'01/2024',end:'06/2025',progress:80,status:'Đang triển khai'},
+  {id:'NC002',title:'Xây dựng khung năng lực môi giới BĐS Việt Nam',leadId:'NV002',level:'Bộ XD',budget:450000000,start:'06/2023',end:'12/2025',progress:90,status:'Hoàn thiện BC'},
+  {id:'NC003',title:'Phân tích rủi ro đầu tư BĐS nghỉ dưỡng',leadId:'NV004',level:'Viện',budget:120000000,start:'01/2025',end:'12/2025',progress:30,status:'Mới bắt đầu'},
+  {id:'NC004',title:'Chỉ số giá BĐS các tỉnh phía Nam 2025',leadId:'NV005',level:'Viện',budget:95000000,start:'01/2025',end:'09/2025',progress:55,status:'Đang triển khai'},
+  {id:'NC005',title:'Khảo sát nhu cầu đào tạo môi giới BĐS 2026',leadId:'NV009',level:'Viện',budget:60000000,start:'03/2025',end:'10/2025',progress:25,status:'Đang triển khai'},
+],
+contracts:[
+  {staffId:'NV001',type:'Không thời hạn',start:'01/01/2015',end:'—',status:'Có hiệu lực'},
+  {staffId:'NV002',type:'Không thời hạn',start:'01/03/2016',end:'—',status:'Có hiệu lực'},
+  {staffId:'NV003',type:'2 năm',start:'01/06/2024',end:'31/05/2026',status:'Có hiệu lực'},
+  {staffId:'NV004',type:'2 năm',start:'01/09/2023',end:'31/08/2025',status:'Sắp hết hạn'},
+  {staffId:'NV005',type:'2 năm',start:'01/03/2024',end:'28/02/2026',status:'Có hiệu lực'},
+  {staffId:'NV006',type:'Không thời hạn',start:'01/01/2017',end:'—',status:'Có hiệu lực'},
+  {staffId:'NV007',type:'Không thời hạn',start:'01/04/2017',end:'—',status:'Có hiệu lực'},
+  {staffId:'NV008',type:'1 năm',start:'01/06/2024',end:'31/05/2025',status:'Sắp hết hạn'},
+  {staffId:'NV009',type:'2 năm',start:'01/09/2023',end:'31/08/2025',status:'Sắp hết hạn'},
+  {staffId:'NV010',type:'Thỉnh giảng',start:'01/01/2025',end:'31/12/2025',status:'Có hiệu lực'},
+  {staffId:'NV011',type:'Thỉnh giảng',start:'01/01/2025',end:'31/12/2025',status:'Có hiệu lực'},
+],
+leave:[
+  {staffId:'NV003',type:'Nghỉ phép năm',from:'12/05/2025',to:'16/05/2025',days:5,reason:'Du lịch gia đình',status:'Đã duyệt'},
+  {staffId:'NV012',type:'Nghỉ ốm',from:'06/05/2025',to:'07/05/2025',days:2,reason:'Khám sức khoẻ',status:'Đã duyệt'},
+  {staffId:'NV014',type:'Nghỉ phép năm',from:'19/05/2025',to:'23/05/2025',days:5,reason:'Việc gia đình',status:'Chờ duyệt'},
+  {staffId:'NV015',type:'Nghỉ không lương',from:'26/05/2025',to:'30/05/2025',days:5,reason:'Tham dự hội thảo',status:'Chờ duyệt'},
+],
+};
+
+function byId(arr,id,fld='id'){return arr.find(x=>x[fld]===id)||{}}
+function getStaff(id){const s=byId(DB.staff,id);return s.name?s:{name:id,degree:'',av:'??',avc:'avb'}}
+function getCourse(id){const c=byId(DB.courses,id);return c.name?c:{name:id,city:'',branch:''}}
+function getStudent(id){const s=byId(DB.students,id);return s.name?s:{name:id,av:'??',avc:'avb'}}
+function getBranch(id){const b=byId(DB.branches,id);return b.name?b:{name:id,city:''}}
+function getCert(id){return byId(DB.certs,id)}
+function getPartner(id){return byId(DB.partners,id)}
+function fmt(n){return(+n).toLocaleString('vi-VN')+'đ'}
+function fmtM(n){return((+n)/1000000).toFixed(1)+' tr.'}
+function bdg(t,c){return`<span class="badge ${c}">${t}</span>`}
+const ST_MAP={'Đang học':'bb','Sắp khai giảng':'ba','Đang tuyển sinh':'bp','Hoàn thành':'bg','Tốt nghiệp':'bg','Bảo lưu':'ba','Đã cấp':'bt','Chờ ký duyệt':'ba','Hoạt động':'bg','Thử nghiệm':'ba','Sắp mở':'bp','Đã lên lịch':'bb','Chờ xác nhận':'ba','Hoàn thành BC':'bt','Mới bắt đầu':'ba','Đang triển khai':'bb','Đang hợp tác':'bg','Biên chế':'bb','Cơ hữu':'bt','Thỉnh giảng':'bp','Có hiệu lực':'bg','Sắp hết hạn':'ba','Đã xác nhận':'bt','Đã thực hiện':'bg','Chờ duyệt':'ba','Đã duyệt':'bg'};
+function sBdg(s){return bdg(s,ST_MAP[s]||'bgr')}
+function avHtml(s){return`<span class="av ${s.avc}" style="margin-right:6px">${s.av}</span>`}
+function pbar(pct,col='#185FA5'){return`<div style="display:flex;align-items:center;gap:5px"><div class="pbar" style="width:55px"><div class="pf" style="width:${pct}%;background:${col}"></div></div><span style="font-size:11px">${pct}%</span></div>`}
+function coursePct(c){const p=Math.round(c.enrolled/c.max*100);const col=c.status==='Hoàn thành'?'#3B6D11':c.status==='Đang tuyển sinh'?'#EF9F27':'#185FA5';return`<div style="display:flex;align-items:center;gap:5px"><div class="pbar" style="width:50px"><div class="pf" style="width:${p}%;background:${col}"></div></div><span style="font-size:11px">${c.enrolled}/${c.max}</span></div>`}
+</script>
+
+<div id="app">
+<div id="hdr">
+  <div class="logo-mark">VĐT</div>
+  <div><div class="logo-name">Viện NC &amp; Đào Tạo BĐS</div><span class="logo-sub">VRETI IMS v3.0 — Dữ liệu liên thông đầy đủ</span></div>
+  <div class="hdr-r">
+    <button class="hdr-badge" style="background:#E24B4A;color:#fff" onclick="showPg('exam')"><i class="ti ti-pencil" aria-hidden="true"></i> 5 kỳ thi</button>
+    <button class="hdr-badge" style="background:#854F0B;color:#fff" onclick="showPg('cert')"><i class="ti ti-certificate" aria-hidden="true"></i> 5 CC chờ</button>
+    <div class="hdr-user"><i class="ti ti-user-circle" style="font-size:16px" aria-hidden="true"></i> GS.TS Nguyễn Văn Khoa</div>
+  </div>
+</div>
+
+<div id="layout">
+<div id="sb">
+  <div class="ng"><div class="nl">Tổng quan</div>
+    <div class="ni active" onclick="showPg('dash')"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Dashboard</div>
+  </div>
+  <div class="ng"><div class="nl">Đào tạo</div>
+    <div class="ni" onclick="showPg('courses')"><i class="ti ti-books" aria-hidden="true"></i>Khoá học<span class="nc">11</span></div>
+    <div class="ni" onclick="showPg('students')"><i class="ti ti-users" aria-hidden="true"></i>Học viên<span class="nc">18</span></div>
+    <div class="ni" onclick="showPg('schedule')"><i class="ti ti-calendar-event" aria-hidden="true"></i>Lịch khai giảng</div>
+    <div class="ni" onclick="showPg('exam')"><i class="ti ti-pencil" aria-hidden="true"></i>Thi &amp; Đánh giá<span class="nc hot">5</span></div>
+  </div>
+  <div class="ng"><div class="nl">Chứng chỉ</div>
+    <div class="ni" onclick="showPg('cert')"><i class="ti ti-certificate" aria-hidden="true"></i>Cấp chứng chỉ<span class="nc hot">5</span></div>
+    <div class="ni" onclick="showPg('certlookup')"><i class="ti ti-search" aria-hidden="true"></i>Tra cứu CC</div>
+  </div>
+  <div class="ng"><div class="nl">Nhân sự</div>
+    <div class="ni" onclick="showPg('staff')"><i class="ti ti-id-badge" aria-hidden="true"></i>Cán bộ – GV<span class="nc">15</span></div>
+    <div class="ni" onclick="showPg('hr')"><i class="ti ti-file-text" aria-hidden="true"></i>Quản lý HR</div>
+  </div>
+  <div class="ng"><div class="nl">Tài chính</div>
+    <div class="ni" onclick="showPg('finance')"><i class="ti ti-coin" aria-hidden="true"></i>Thu – Chi</div>
+    <div class="ni" onclick="showPg('tuition')"><i class="ti ti-credit-card" aria-hidden="true"></i>Học phí</div>
+  </div>
+  <div class="ng"><div class="nl">Địa bàn</div>
+    <div class="ni" onclick="showPg('branches')"><i class="ti ti-map-pin" aria-hidden="true"></i>Chi nhánh<span class="nc">9</span></div>
+    <div class="ni" onclick="showPg('partners')"><i class="ti ti-handshake" aria-hidden="true"></i>Đối tác<span class="nc">6</span></div>
+  </div>
+  <div class="ng"><div class="nl">Nghiên cứu</div>
+    <div class="ni" onclick="showPg('research')"><i class="ti ti-microscope" aria-hidden="true"></i>Đề tài NC<span class="nc">5</span></div>
+  </div>
+  <div class="ng"><div class="nl">Hành chính</div>
+    <div class="ni" onclick="showPg('reports')"><i class="ti ti-report-analytics" aria-hidden="true"></i>Báo cáo</div>
+  </div>
+</div>
+
+<div id="main">
+
+<div class="pg active" id="p-dash"></div>
+<div class="pg" id="p-courses"></div>
+<div class="pg" id="p-students"></div>
+<div class="pg" id="p-schedule"></div>
+<div class="pg" id="p-exam"></div>
+<div class="pg" id="p-cert"></div>
+<div class="pg" id="p-certlookup"></div>
+<div class="pg" id="p-staff"></div>
+<div class="pg" id="p-hr"></div>
+<div class="pg" id="p-finance"></div>
+<div class="pg" id="p-tuition"></div>
+<div class="pg" id="p-branches"></div>
+<div class="pg" id="p-partners"></div>
+<div class="pg" id="p-research"></div>
+<div class="pg" id="p-reports"></div>
+
+</div>
+</div>
+</div>
+
+<script>
+let ACTIVE='dash';
+function showPg(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  const el=document.getElementById('p-'+id);
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.ni').forEach(n=>{if((n.getAttribute('onclick')||'').includes("'"+id+"'"))n.classList.add('active');});
+  ACTIVE=id;
+  const map={dash:rDash,courses:rCourses,students:rStudents,schedule:rSchedule,exam:rExam,cert:rCert,certlookup:rCertLookup,staff:rStaff,hr:rHR,finance:rFinance,tuition:rTuition,branches:rBranches,partners:rPartners,research:rResearch,reports:rReports};
+  if(map[id])map[id]();
+}
+
+function modal(id,html,onShow){
+  let m=document.getElementById('mwrap_'+id);
+  if(!m){m=document.createElement('div');m.id='mwrap_'+id;m.className='m-wrap';m.innerHTML=`<div class="modal">${html}</div>`;m.addEventListener('click',e=>{if(e.target===m)m.style.display='none'});document.body.appendChild(m);}
+  m.style.display='flex';
+  if(onShow)onShow(m);
+}
+function closeM(id){const m=document.getElementById('mwrap_'+id);if(m)m.style.display='none';}
+
+function rDash(){
+  const hvCount=DB.students.filter(s=>s.status==='Đang học').length;
+  const gradCount=DB.students.filter(s=>s.status==='Tốt nghiệp').length;
+  const activeC=DB.courses.filter(c=>c.status==='Đang học').length;
+  const pendCC=DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId).length;
+  const totalRev=DB.txns.filter(t=>t.type==='Thu').reduce((a,t)=>a+t.amount,0);
+  const totalChi=DB.txns.filter(t=>t.type==='Chi').reduce((a,t)=>a+t.amount,0);
+  const activeBr=DB.branches.filter(b=>b.status==='Hoạt động').length;
+  const cityCount={};DB.students.forEach(s=>{cityCount[s.city]=(cityCount[s.city]||0)+1;});
+  const cols=['#185FA5','#0F6E56','#534AB7','#854F0B','#993C1D','#3B6D11','#A32D2D'];
+  document.getElementById('p-dash').innerHTML=`
+    <div class="pg-t">Dashboard</div><div class="pg-s">Thứ Ba, 06/05/2025 — Quý II/2025 — Dữ liệu thời gian thực</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Học viên đang học</div><div class="sv">${hvCount}</div><div class="ss up">+${DB.students.filter(s=>s.id>='HV2025012').length} tháng này</div></div>
+      <div class="sc"><div class="sl">Khoá học đang mở</div><div class="sv">${activeC}</div><div class="ss">${DB.courses.filter(c=>c.status==='Sắp khai giảng').length} sắp khai giảng</div></div>
+      <div class="sc"><div class="sl">Chứng chỉ đã cấp</div><div class="sv">${DB.certs.length}</div><div class="ss up">${pendCC} chờ cấp thêm</div></div>
+      <div class="sc"><div class="sl">Doanh thu T5</div><div class="sv">${fmtM(totalRev)}</div><div class="ss up">Lợi nhuận ${fmtM(totalRev-totalChi)}</div></div>
+      <div class="sc"><div class="sl">Giảng viên</div><div class="sv">${DB.staff.filter(s=>s.dept==='P.Đào tạo').length}</div><div class="ss">${DB.staff.filter(s=>s.type==='Cơ hữu').length} cơ hữu</div></div>
+      <div class="sc"><div class="sl">Chi nhánh HĐ</div><div class="sv">${activeBr}</div><div class="ss">${[...new Set(DB.branches.map(b=>b.city))].length} tỉnh thành</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">Khoá học đang hoạt động</div><span class="lnk" onclick="showPg('courses')">Xem tất cả →</span></div>
+        <div class="tw"><table><thead><tr><th>Mã khoá</th><th>Tên khoá</th><th>Sĩ số</th><th>Trạng thái</th></tr></thead><tbody>
+        ${DB.courses.filter(c=>c.status==='Đang học').map(c=>`<tr><td class="mono">${c.id}</td><td style="font-weight:500;max-width:150px">${c.name.substring(0,26)}</td><td>${coursePct(c)}</td><td>${sBdg(c.status)}</td></tr>`).join('')}
+        </tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">Hoạt động gần đây</div></div>
+        <div class="tl">
+          ${[
+            {t:`Cấp ${DB.certs.length} CC hành nghề môi giới BĐS`,m:'2 giờ trước · K14-HCM, K7-HN',c:'#3B6D11'},
+            {t:`Khai giảng K16-HCM – ${DB.courses.find(c=>c.id==='K16-HCM').enrolled} học viên`,m:'Hôm nay 08:00',c:'#185FA5'},
+            {t:`Thu học phí ${fmtM(DB.txns[1].amount)} – K15-HCM`,m:'Hôm qua 14:30',c:'#854F0B'},
+            {t:`Lên lịch 5 kỳ thi T5/2025`,m:'04/05/2025',c:'#534AB7'},
+            {t:`Thêm 3 học viên mới đăng ký K9-HN`,m:'03/05/2025',c:'#993C1D'},
+          ].map(a=>`<div class="tl-i"><div class="tl-d" style="background:${a.c}"></div><div><div class="tl-t">${a.t}</div><div class="tl-m">${a.m}</div></div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Phân bố học viên theo tỉnh thành</div></div>
+      <div style="padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px">
+        ${Object.entries(cityCount).sort((a,b)=>b[1]-a[1]).map(([c,n],i)=>`<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px;text-align:center"><div style="font-size:18px;font-weight:500;color:${cols[i%cols.length]}">${n}</div><div style="font-size:11px;color:var(--color-text-secondary)">${c}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">Kỳ thi sắp tới</div><span class="lnk" onclick="showPg('exam')">Xem tất cả →</span></div>
+        <div class="tw"><table><thead><tr><th>Ngày</th><th>Khoá</th><th>Loại</th><th>HV</th></tr></thead><tbody>
+        ${DB.exams.filter(e=>e.status!=='Hoàn thành').map(e=>`<tr><td style="font-weight:500;color:#0C447C">${e.date}</td><td><span class="lnk" onclick="showPg('courses')">${e.courseId}</span></td><td>${bdg(e.type,e.type==='Kết thúc khoá'?'bb':'ba')}</td><td>${e.count}</td></tr>`).join('')}
+        </tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">Học viên tốt nghiệp – chờ CC</div><span class="lnk" onclick="showPg('cert')">Xem tất cả →</span></div>
+        <div class="tw"><table><thead><tr><th>Học viên</th><th>Khoá</th><th>Điểm</th></tr></thead><tbody>
+        ${DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId).map(s=>`<tr><td>${avHtml(s)}${s.name}</td><td>${s.course}</td><td style="font-weight:500;color:#0C447C">${s.score}/10</td></tr>`).join('')}
+        ${DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId).length===0?'<tr><td colspan="3" style="color:var(--color-text-tertiary);padding:10px">Tất cả đã được cấp chứng chỉ.</td></tr>':''}
+        </tbody></table></div>
+      </div>
+    </div>`;
+}
+
+function rCourses(){
+  const q=(document.getElementById('crs-q')||{}).value||'';
+  const fStatus=(document.getElementById('crs-st')||{}).value||'';
+  let data=DB.courses.filter(c=>{
+    const mq=!q||c.name.toLowerCase().includes(q.toLowerCase())||c.id.toLowerCase().includes(q.toLowerCase());
+    const ms=!fStatus||c.status===fStatus;
+    return mq&&ms;
+  });
+  const pills={};DB.courses.forEach(c=>pills[c.status]=(pills[c.status]||0)+1);
+  document.getElementById('p-courses').innerHTML=`
+    <div class="pg-t">Quản lý khoá học</div><div class="pg-s">Tất cả chương trình đào tạo trong hệ thống</div>
+    <div class="pill-row">${Object.entries(pills).map(([s,n])=>`<div class="pill"><strong>${n}</strong> ${s}</div>`).join('')}</div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách khoá học</div>
+        <div class="ca">
+          <input class="sb-inp" id="crs-q" placeholder="Tìm khoá học..." value="${q}" oninput="rCourses()" style="width:160px">
+          <select class="sb-inp" id="crs-st" onchange="rCourses()">
+            <option value="">Tất cả</option>
+            <option ${fStatus==='Đang học'?'selected':''}>Đang học</option>
+            <option ${fStatus==='Sắp khai giảng'?'selected':''}>Sắp khai giảng</option>
+            <option ${fStatus==='Đang tuyển sinh'?'selected':''}>Đang tuyển sinh</option>
+            <option ${fStatus==='Hoàn thành'?'selected':''}>Hoàn thành</option>
+          </select>
+          <button class="btn pr" onclick="showAddCourseModal()"><i class="ti ti-plus" aria-hidden="true"></i> Thêm khoá</button>
+        </div>
+      </div>
+      <div class="tw"><table><thead><tr><th>Mã khoá</th><th>Tên chương trình</th><th>Chi nhánh</th><th>Giảng viên</th><th>Thời lượng</th><th>Sĩ số</th><th>Học phí</th><th>Trạng thái</th><th></th></tr></thead><tbody>
+      ${data.map(c=>{const t=getStaff(c.teacher);const b=getBranch(c.branch);return`<tr>
+        <td class="mono">${c.id}</td>
+        <td style="font-weight:500">${c.name}</td>
+        <td>${b.name}</td>
+        <td style="font-size:11px">${t.degree} ${t.name}</td>
+        <td>${c.hours} tiết</td>
+        <td>${coursePct(c)}</td>
+        <td style="font-size:11px">${fmt(c.fee)}</td>
+        <td>${sBdg(c.status)}</td>
+        <td><button class="btn sm" onclick="showCourseDetail('${c.id}')"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>
+    <div id="crs-det"></div>`;
+}
+
+function showCourseDetail(id){
+  const c=getCourse(id);const b=getBranch(c.branch);const t=getStaff(c.teacher);
+  const students=DB.students.filter(s=>s.course===id);
+  const exams=DB.exams.filter(e=>e.courseId===id);
+  const revenue=students.reduce((a,s)=>a+s.paid,0);
+  document.getElementById('crs-det').innerHTML=`
+    <div class="det-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="font-size:13px;font-weight:500">${c.name}</div>
+        <button class="btn sm" onclick="document.getElementById('crs-det').innerHTML=''"><i class="ti ti-x" aria-hidden="true"></i> Đóng</button>
+      </div>
+      <div class="dp-grid">
+        ${[['Mã khoá',`<span class="mono">${c.id}</span>`],['Chi nhánh',`${b.name} – ${b.city}`],['Giảng viên',`${t.degree} ${t.name}`],['Thời gian',`${c.start} → ${c.end}`],['Học phí',fmt(c.fee)],['Sĩ số',`${c.enrolled}/${c.max}`],['Doanh thu thực thu',fmtM(revenue)],['Trạng thái',sBdg(c.status)]].map(([l,v])=>`<div><div class="dp-l">${l}</div><div class="dp-v">${v}</div></div>`).join('')}
+      </div>
+      <div style="font-size:12px;font-weight:500;margin-bottom:8px">Học viên (${students.length})</div>
+      <div class="tw"><table><thead><tr><th>Học viên</th><th>Mã HV</th><th>Tỉnh</th><th>Đã đóng</th><th>Còn nợ</th><th>Tình trạng</th><th>CC</th></tr></thead><tbody>
+      ${students.map(s=>{const debt=s.fee-s.paid;const cc=s.certId?getCert(s.certId):{};return`<tr>
+        <td>${avHtml(s)}<span class="lnk" onclick="showStudentDetail('${s.id}')">${s.name}</span></td>
+        <td class="mono">${s.id}</td><td>${s.city}</td>
+        <td style="color:#0F6E56">${fmt(s.paid)}</td>
+        <td style="color:${debt>0?'#A32D2D':'var(--color-text-tertiary)'}">${debt>0?fmt(debt):'—'}</td>
+        <td>${sBdg(s.status)}</td>
+        <td>${cc.no?`<span class="lnk" onclick="document.getElementById('p-certlookup').querySelector&&showPg('certlookup')" style="font-size:11px">${cc.no}</span>`:bdg('—','bgr')}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+      ${exams.length?`<div style="font-size:12px;font-weight:500;margin:12px 0 8px">Kỳ thi</div>
+      <div class="tw"><table><thead><tr><th>Ngày</th><th>Loại</th><th>Phòng</th><th>HV</th><th>Giám thị</th><th>Tỉ lệ đỗ</th><th>Trạng thái</th></tr></thead><tbody>
+      ${exams.map(e=>{const ex=getStaff(e.examinerId);return`<tr><td style="color:#0C447C">${e.date}</td><td>${bdg(e.type,e.type==='Kết thúc khoá'?'bb':'ba')}</td><td style="font-size:11px">${e.room}</td><td>${e.count}</td><td style="font-size:11px">${ex.name}</td><td>${e.passRate!==null?pbar(e.passRate,'#3B6D11'):'—'}</td><td>${sBdg(e.status)}</td></tr>`;}).join('')}
+      </tbody></table></div>`:''}
+    </div>`;
+  document.getElementById('crs-det').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function showAddCourseModal(){
+  const brOpts=DB.branches.map(b=>`<option value="${b.id}">${b.name}</option>`).join('');
+  const tvOpts=DB.staff.filter(s=>s.dept==='P.Đào tạo').map(s=>`<option value="${s.id}">${s.degree} ${s.name}</option>`).join('');
+  modal('addcourse',`
+    <div class="mt"><i class="ti ti-books" style="font-size:18px" aria-hidden="true"></i> Thêm khoá học mới</div>
+    <div class="fr"><div class="fg"><label class="fl">Tên khoá học</label><input class="fi" id="nc-name" placeholder="Môi giới BĐS cơ bản"></div><div class="fg"><label class="fl">Mã khoá</label><input class="fi" id="nc-id" placeholder="K17-HCM"></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Chi nhánh</label><select class="fi" id="nc-br">${brOpts}</select></div><div class="fg"><label class="fl">Giảng viên phụ trách</label><select class="fi" id="nc-tv">${tvOpts}</select></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Ngày khai giảng</label><input class="fi" type="date" id="nc-start"></div><div class="fg"><label class="fl">Học phí (VNĐ)</label><input class="fi" type="number" id="nc-fee" placeholder="8500000"></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Thời lượng (tiết)</label><input class="fi" type="number" id="nc-hours" placeholder="60"></div><div class="fg"><label class="fl">Sĩ số tối đa</label><input class="fi" type="number" id="nc-max" placeholder="50"></div></div>
+    <div class="mf"><button class="btn" onclick="closeM('addcourse')">Huỷ</button><button class="btn pr" onclick="addCourse()"><i class="ti ti-check" aria-hidden="true"></i> Lưu khoá học</button></div>`);
+}
+
+function addCourse(){
+  const id=document.getElementById('nc-id').value.trim();
+  const name=document.getElementById('nc-name').value.trim();
+  if(!id||!name){alert('Vui lòng nhập mã và tên khoá học');return;}
+  const br=document.getElementById('nc-br').value;
+  const city=getBranch(br).city;
+  DB.courses.push({id,name,branch:br,city,hours:+document.getElementById('nc-hours').value||60,max:+document.getElementById('nc-max').value||50,fee:+document.getElementById('nc-fee').value||8500000,teacher:document.getElementById('nc-tv').value,start:document.getElementById('nc-start').value||'TBD',end:'TBD',status:'Đang tuyển sinh',enrolled:0});
+  closeM('addcourse');rCourses();
+}
+
+function rStudents(){
+  const q=(document.getElementById('sv-q')||{}).value||'';
+  const fSt=(document.getElementById('sv-st')||{}).value||'';
+  const fCourse=(document.getElementById('sv-crs')||{}).value||'';
+  let data=DB.students.filter(s=>{
+    const mq=!q||s.name.toLowerCase().includes(q.toLowerCase())||s.id.toLowerCase().includes(q.toLowerCase())||s.city.toLowerCase().includes(q.toLowerCase());
+    const ms=!fSt||s.status===fSt;
+    const mc=!fCourse||s.course===fCourse;
+    return mq&&ms&&mc;
+  });
+  const totalDebt=DB.students.reduce((a,s)=>a+(s.fee-s.paid),0);
+  document.getElementById('p-students').innerHTML=`
+    <div class="pg-t">Quản lý học viên</div><div class="pg-s">Hồ sơ và tiến độ học tập toàn hệ thống</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng học viên</div><div class="sv">${DB.students.length}</div></div>
+      <div class="sc"><div class="sl">Đang học</div><div class="sv">${DB.students.filter(s=>s.status==='Đang học').length}</div></div>
+      <div class="sc"><div class="sl">Tốt nghiệp</div><div class="sv">${DB.students.filter(s=>s.status==='Tốt nghiệp').length}</div><div class="ss up">${DB.certs.length} đã có CC</div></div>
+      <div class="sc"><div class="sl">Bảo lưu</div><div class="sv">${DB.students.filter(s=>s.status==='Bảo lưu').length}</div></div>
+      <div class="sc"><div class="sl">Tổng nợ HP</div><div class="sv" style="color:#A32D2D">${fmtM(totalDebt)}</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách học viên (${data.length}/${DB.students.length})</div>
+        <div class="ca">
+          <input class="sb-inp" id="sv-q" placeholder="Tên / Mã / Tỉnh..." value="${q}" oninput="rStudents()" style="width:150px">
+          <select class="sb-inp" id="sv-st" onchange="rStudents()">
+            <option value="">Tất cả trạng thái</option>
+            <option ${fSt==='Đang học'?'selected':''}>Đang học</option>
+            <option ${fSt==='Tốt nghiệp'?'selected':''}>Tốt nghiệp</option>
+            <option ${fSt==='Bảo lưu'?'selected':''}>Bảo lưu</option>
+          </select>
+          <select class="sb-inp" id="sv-crs" onchange="rStudents()" style="width:120px">
+            <option value="">Tất cả khoá</option>
+            ${DB.courses.map(c=>`<option value="${c.id}" ${fCourse===c.id?'selected':''}>${c.id}</option>`).join('')}
+          </select>
+          <button class="btn pr" onclick="showAddStudentModal()"><i class="ti ti-plus" aria-hidden="true"></i> Thêm HV</button>
+        </div>
+      </div>
+      <div class="tw"><table><thead><tr><th>Học viên</th><th>Mã HV</th><th>Khoá học</th><th>Tỉnh</th><th>Học phí</th><th>Đã đóng</th><th>Còn nợ</th><th>Tình trạng</th><th>Chứng chỉ</th><th></th></tr></thead><tbody>
+      ${data.map(s=>{const debt=s.fee-s.paid;const cc=s.certId?getCert(s.certId):{};return`<tr>
+        <td>${avHtml(s)}${s.name}</td>
+        <td class="mono">${s.id}</td>
+        <td><span class="lnk" onclick="showCourseDetail('${s.course}')">${s.course}</span></td>
+        <td>${s.city}</td>
+        <td style="font-size:11px">${fmt(s.fee)}</td>
+        <td style="color:#0F6E56;font-size:11px">${fmt(s.paid)}</td>
+        <td style="color:${debt>0?'#A32D2D':'var(--color-text-tertiary)'};font-size:11px">${debt>0?fmt(debt):'—'}</td>
+        <td>${sBdg(s.status)}</td>
+        <td>${cc.no?`<span class="lnk" onclick="showPg('certlookup');setTimeout(()=>{document.getElementById('cl-q').value='${cc.no}';doLookup()},50)">${cc.no.substring(0,16)}</span>`:bdg('Chưa cấp','ba')}</td>
+        <td><button class="btn sm" onclick="showStudentDetail('${s.id}')"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>
+    <div id="sv-det"></div>`;
+}
+
+function showStudentDetail(id){
+  const s=getStudent(id);const c=getCourse(s.course);const b=getBranch(c.branch);
+  const cc=s.certId?getCert(s.certId):{};
+  const partner=s.partner?getPartner(s.partner):{};
+  const debt=s.fee-s.paid;
+  const det=document.getElementById('sv-det')||document.createElement('div');
+  if(!document.getElementById('sv-det'))document.getElementById('p-students').appendChild(det);
+  det.innerHTML=`
+    <div class="det-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:10px"><span class="av ${s.avc}" style="width:36px;height:36px;font-size:13px">${s.av}</span><div><div style="font-size:14px;font-weight:500">${s.name}</div><div style="font-size:11px;color:var(--color-text-secondary)">${s.id} · ${s.course}</div></div></div>
+        <button class="btn sm" onclick="document.getElementById('sv-det').innerHTML=''"><i class="ti ti-x" aria-hidden="true"></i></button>
+      </div>
+      <div class="dp-grid">
+        ${[['Ngày sinh',s.dob],['CCCD',`<span class="mono">${s.cccd}</span>`],['Điện thoại',s.phone],['Email',`<span style="font-size:11px">${s.email}</span>`],['Tỉnh thường trú',s.city],['Khoá học',`<span class="lnk" onclick="showCourseDetail('${s.course}')">${c.name}</span>`],['Chi nhánh',b.name],['Học phí',fmt(s.fee)],['Đã đóng',`<span style="color:#0F6E56">${fmt(s.paid)}</span>`],['Còn nợ',`<span style="color:${debt>0?'#A32D2D':'var(--color-text-tertiary)'}">${debt>0?fmt(debt):'Không nợ'}</span>`],['Tình trạng',sBdg(s.status)],['Giới thiệu bởi',partner.name||'Trực tiếp'],s.score?['Điểm thi',`<span style="font-size:15px;font-weight:500;color:#0C447C">${s.score}/10</span>`]:null,cc.no?['Số CC',`<span style="color:#085041">${cc.no}</span>`]:null,cc.no?['Hiệu lực CC',`${cc.date} → ${cc.expire}`]:null].filter(Boolean).map(([l,v])=>`<div><div class="dp-l">${l}</div><div class="dp-v">${v}</div></div>`).join('')}
+      </div>
+    </div>`;
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function showAddStudentModal(){
+  const crsOpts=DB.courses.filter(c=>c.status!=='Hoàn thành').map(c=>`<option value="${c.id}">${c.id} – ${c.city} (còn ${c.max-c.enrolled} chỗ)</option>`).join('');
+  const cities=[...new Set(DB.branches.map(b=>b.city))].map(c=>`<option>${c}</option>`).join('');
+  modal('addstudent',`
+    <div class="mt"><i class="ti ti-user-plus" style="font-size:18px" aria-hidden="true"></i> Đăng ký học viên mới</div>
+    <div class="fr"><div class="fg"><label class="fl">Họ và tên</label><input class="fi" id="ns-name" placeholder="Nguyễn Thị Lan"></div><div class="fg"><label class="fl">Ngày sinh</label><input class="fi" type="date" id="ns-dob"></div></div>
+    <div class="fr"><div class="fg"><label class="fl">CCCD</label><input class="fi" id="ns-cccd" placeholder="0123456789xx"></div><div class="fg"><label class="fl">Số điện thoại</label><input class="fi" id="ns-phone" placeholder="09xx-xxx-xxx"></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Email</label><input class="fi" id="ns-email" placeholder="email@example.com"></div><div class="fg"><label class="fl">Tỉnh thường trú</label><select class="fi" id="ns-city">${cities}</select></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Đăng ký khoá học</label><select class="fi" id="ns-course">${crsOpts}</select></div><div class="fg"><label class="fl">Thanh toán</label><select class="fi" id="ns-pay"><option value="full">Thanh toán đủ</option><option value="half">Trả góp 2 đợt (50%)</option><option value="zero">Chưa thanh toán</option></select></div></div>
+    <div class="mf"><button class="btn" onclick="closeM('addstudent')">Huỷ</button><button class="btn pr" onclick="addStudent()"><i class="ti ti-check" aria-hidden="true"></i> Đăng ký</button></div>`);
+}
+
+function addStudent(){
+  const name=document.getElementById('ns-name').value.trim();
+  if(!name){alert('Vui lòng nhập họ tên');return;}
+  const courseId=document.getElementById('ns-course').value;
+  const course=getCourse(courseId);
+  const payOpt=document.getElementById('ns-pay').value;
+  const fee=course.fee||8500000;
+  const paid=payOpt==='full'?fee:payOpt==='half'?Math.round(fee/2):0;
+  const newId='HV2025'+(100+DB.students.length+1).toString().padStart(3,'0').slice(-3);
+  DB.students.push({id:newId,name,dob:document.getElementById('ns-dob').value||'—',cccd:document.getElementById('ns-cccd').value||'—',phone:document.getElementById('ns-phone').value||'—',email:document.getElementById('ns-email').value||'—',city:document.getElementById('ns-city').value,course:courseId,fee,paid,status:'Đang học',certId:null,score:null,av:name.split(' ').map(w=>w[0]).slice(-2).join('').toUpperCase(),avc:'avb',partner:null});
+  course.enrolled=(course.enrolled||0)+1;
+  closeM('addstudent');rStudents();
+}
+
+function rSchedule(){
+  const data=DB.courses.filter(c=>c.status!=='Hoàn thành').sort((a,b)=>a.start.localeCompare(b.start));
+  document.getElementById('p-schedule').innerHTML=`
+    <div class="pg-t">Lịch khai giảng</div><div class="pg-s">Kế hoạch tổ chức khoá học theo tỉnh thành – T3–T8/2025</div>
+    <div class="card">
+      <div class="ch"><div class="ct">Lịch các khoá học</div><button class="btn pr"><i class="ti ti-plus" aria-hidden="true"></i> Lên kế hoạch</button></div>
+      <div class="tw"><table><thead><tr><th>Ngày KG</th><th>Khoá học</th><th>Chi nhánh</th><th>GV phụ trách</th><th>Sĩ số</th><th>Ngày kết thúc</th><th>Trạng thái</th></tr></thead><tbody>
+      ${data.map(c=>{const t=getStaff(c.teacher);const b=getBranch(c.branch);return`<tr>
+        <td style="font-weight:500;color:#0C447C">${c.start}</td>
+        <td><span class="lnk" onclick="showCourseDetail('${c.id}')">${c.name}</span></td>
+        <td style="font-size:11px">${b.name}</td>
+        <td style="font-size:11px">${t.degree} ${t.name}</td>
+        <td>${c.enrolled}/${c.max}</td>
+        <td>${c.end}</td>
+        <td>${sBdg(c.status)}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function rExam(){
+  const done=DB.exams.filter(e=>e.status==='Hoàn thành');
+  const upcoming=DB.exams.filter(e=>e.status!=='Hoàn thành');
+  const avgPass=done.length?Math.round(done.reduce((a,e)=>a+e.passRate,0)/done.length):0;
+  document.getElementById('p-exam').innerHTML=`
+    <div class="pg-t">Thi &amp; Đánh giá</div><div class="pg-s">Lịch thi và kết quả học viên</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Kỳ thi sắp tới</div><div class="sv">${upcoming.length}</div></div>
+      <div class="sc"><div class="sl">HV dự thi sắp tới</div><div class="sv">${upcoming.reduce((a,e)=>a+e.count,0)}</div></div>
+      <div class="sc"><div class="sl">Kỳ thi hoàn thành</div><div class="sv">${done.length}</div></div>
+      <div class="sc"><div class="sl">Tỉ lệ đỗ trung bình</div><div class="sv">${avgPass}%</div><div class="ss up">+3% so tháng trước</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Tất cả kỳ thi</div>
+        <button class="btn pr" onclick="showAddExamModal()"><i class="ti ti-plus" aria-hidden="true"></i> Tạo kỳ thi</button>
+      </div>
+      <div class="tw"><table><thead><tr><th>Ngày thi</th><th>Khoá học</th><th>Loại thi</th><th>Phòng thi</th><th>Số HV</th><th>Giám thị</th><th>Tỉ lệ đỗ</th><th>Trạng thái</th></tr></thead><tbody>
+      ${DB.exams.map(e=>{const ex=getStaff(e.examinerId);const c=getCourse(e.courseId);return`<tr>
+        <td style="font-weight:500;color:#0C447C">${e.date}</td>
+        <td><span class="lnk" onclick="showCourseDetail('${e.courseId}')">${e.courseId}</span></td>
+        <td>${bdg(e.type,e.type==='Kết thúc khoá'?'bb':'ba')}</td>
+        <td style="font-size:11px">${e.room}</td>
+        <td>${e.count}</td>
+        <td style="font-size:11px"><span class="lnk" onclick="showStaffDetail('${e.examinerId}')">${ex.name}</span></td>
+        <td>${e.passRate!==null?pbar(e.passRate,'#3B6D11'):'Chưa có'}</td>
+        <td>${sBdg(e.status)}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function showAddExamModal(){
+  const crsOpts=DB.courses.filter(c=>['Đang học','Sắp khai giảng'].includes(c.status)).map(c=>`<option value="${c.id}">${c.id}</option>`).join('');
+  const gmOpts=DB.staff.filter(s=>['P.Khảo thí'].includes(s.dept)).map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+  modal('addexam',`
+    <div class="mt"><i class="ti ti-pencil" style="font-size:18px" aria-hidden="true"></i> Tạo kỳ thi mới</div>
+    <div class="fr"><div class="fg"><label class="fl">Khoá học</label><select class="fi" id="ne-crs">${crsOpts}</select></div><div class="fg"><label class="fl">Loại thi</label><select class="fi" id="ne-type"><option>Kết thúc khoá</option><option>Giữa khoá</option><option>Sát hạch CC</option></select></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Ngày thi</label><input class="fi" type="date" id="ne-date"></div><div class="fg"><label class="fl">Phòng thi</label><input class="fi" id="ne-room" placeholder="P.201 – CS1 HCM"></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Giám thị</label><select class="fi" id="ne-gm">${gmOpts}</select></div><div class="fg"><label class="fl">Số lượng HV</label><input class="fi" type="number" id="ne-count"></div></div>
+    <div class="mf"><button class="btn" onclick="closeM('addexam')">Huỷ</button><button class="btn pr" onclick="addExam()"><i class="ti ti-check" aria-hidden="true"></i> Lưu</button></div>`);
+}
+function addExam(){
+  const date=document.getElementById('ne-date').value;
+  if(!date){alert('Vui lòng chọn ngày thi');return;}
+  DB.exams.push({id:'EX'+(DB.exams.length+1).toString().padStart(3,'0'),date,courseId:document.getElementById('ne-crs').value,type:document.getElementById('ne-type').value,room:document.getElementById('ne-room').value,count:+document.getElementById('ne-count').value||0,examinerId:document.getElementById('ne-gm').value,status:'Chờ xác nhận',passRate:null});
+  closeM('addexam');rExam();
+}
+
+function rCert(){
+  const pendingStudents=DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId);
+  document.getElementById('p-cert').innerHTML=`
+    <div class="pg-t">Cấp chứng chỉ hành nghề</div><div class="pg-s">Chứng chỉ môi giới BĐS theo quy định Bộ Xây dựng</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Chờ cấp CC</div><div class="sv" style="color:#854F0B">${pendingStudents.length}</div></div>
+      <div class="sc"><div class="sl">Đã cấp</div><div class="sv">${DB.certs.length}</div></div>
+      <div class="sc"><div class="sl">Sắp hết hạn (90 ngày)</div><div class="sv" style="color:#A32D2D">47</div></div>
+      <div class="sc"><div class="sl">Tổng CC hệ thống</div><div class="sv">${DB.certs.length + 2836}</div></div>
+    </div>
+    ${pendingStudents.length>0?`<div class="warn-box"><i class="ti ti-alert-triangle" style="font-size:16px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i> Có ${pendingStudents.length} học viên tốt nghiệp chưa được cấp chứng chỉ</div>`:''}
+    <div class="card">
+      <div class="ch"><div class="ct">Hàng đợi cấp chứng chỉ</div><button class="btn pr" onclick="batchCert()"><i class="ti ti-certificate" aria-hidden="true"></i> Cấp hàng loạt</button></div>
+      <div class="tw"><table><thead><tr><th>Học viên</th><th>Mã HV</th><th>Khoá thi đỗ</th><th>Điểm thi</th><th>Tỉnh cấp</th><th>Số CC đề xuất</th><th></th></tr></thead><tbody>
+      ${pendingStudents.length===0?'<tr><td colspan="7" style="padding:14px;color:var(--color-text-tertiary);text-align:center">Không có học viên nào chờ cấp chứng chỉ.</td></tr>':''}
+      ${pendingStudents.map((s,i)=>{const c=getCourse(s.course);const nextNo=DB.certs.length+i+1;const ccNo=`CC-2025-${s.city==='TP.HCM'?'HCM':s.city==='Hà Nội'?'HN':s.city.substring(0,2).toUpperCase()}-${(841+nextNo).toString().padStart(4,'0')}`;return`<tr>
+        <td>${avHtml(s)}<span class="lnk" onclick="showStudentDetail('${s.id}')">${s.name}</span></td>
+        <td class="mono">${s.id}</td>
+        <td><span class="lnk" onclick="showCourseDetail('${s.course}')">${s.course}</span></td>
+        <td style="font-weight:500;color:#0C447C">${s.score}/10</td>
+        <td>${s.city}</td>
+        <td class="mono" style="font-size:11px">${ccNo}</td>
+        <td><button class="btn sm" onclick="issueCert('${s.id}','${ccNo}')"><i class="ti ti-check" aria-hidden="true"></i> Cấp</button></td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Chứng chỉ đã cấp</div></div>
+      <div class="tw"><table><thead><tr><th>Số CC</th><th>Học viên</th><th>Khoá học</th><th>Điểm</th><th>Ngày cấp</th><th>Hiệu lực đến</th><th>Tỉnh</th><th>Trạng thái</th></tr></thead><tbody>
+      ${DB.certs.map(cc=>{const s=getStudent(cc.studentId);return`<tr>
+        <td class="mono"><span class="lnk" onclick="showPg('certlookup');setTimeout(()=>{document.getElementById('cl-q').value='${cc.no}';doLookup();},50)">${cc.no}</span></td>
+        <td>${avHtml(s)}${s.name}</td>
+        <td>${s.course}</td>
+        <td style="font-weight:500;color:#0C447C">${s.score}</td>
+        <td>${cc.date}</td>
+        <td>${cc.expire}</td>
+        <td>${cc.city}</td>
+        <td>${sBdg(cc.status)}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function issueCert(studentId,ccNo){
+  const s=getStudent(studentId);
+  const today='06/05/2025';
+  const expire='06/05/2028';
+  const newCC={id:'CC'+(DB.certs.length+1).toString().padStart(3,'0'),studentId,no:ccNo,date:today,expire,city:s.city,status:'Đã cấp',issuerId:'NV001'};
+  DB.certs.push(newCC);
+  s.certId=newCC.id;
+  rCert();
+}
+function batchCert(){
+  const pending=DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId);
+  pending.forEach((s,i)=>{
+    const nextNo=DB.certs.length+i+1;
+    const ccNo=`CC-2025-${s.city==='TP.HCM'?'HCM':s.city==='Hà Nội'?'HN':s.city.substring(0,2).toUpperCase()}-${(841+nextNo).toString().padStart(4,'0')}`;
+    issueCert(s.id,ccNo);
+  });
+  rCert();
+}
+
+function rCertLookup(){
+  document.getElementById('p-certlookup').innerHTML=`
+    <div class="pg-t">Tra cứu chứng chỉ</div><div class="pg-s">Xác minh tính hợp lệ chứng chỉ hành nghề môi giới BĐS</div>
+    <div class="card" style="max-width:540px;margin-bottom:14px">
+      <div class="ch"><div class="ct"><i class="ti ti-search" style="font-size:15px;margin-right:6px" aria-hidden="true"></i>Tìm kiếm</div></div>
+      <div style="padding:14px;display:flex;gap:8px">
+        <input class="fi" id="cl-q" placeholder="Nhập số CC hoặc họ tên học viên..." style="flex:1">
+        <button class="btn pr" onclick="doLookup()"><i class="ti ti-search" aria-hidden="true"></i> Tra cứu</button>
+      </div>
+    </div>
+    <div style="margin-bottom:10px;font-size:12px;color:var(--color-text-secondary)">CC đã cấp: ${DB.certs.map(c=>`<span class="lnk" style="margin-right:8px" onclick="document.getElementById('cl-q').value='${c.no}';doLookup()">${c.no}</span>`).join('')}</div>
+    <div id="cl-result"></div>`;
+}
+
+function doLookup(){
+  const q=(document.getElementById('cl-q')||{}).value||'';
+  if(!q.trim()){document.getElementById('cl-result').innerHTML='';return;}
+  const cc=DB.certs.find(c=>c.no.toLowerCase().includes(q.toLowerCase()))||DB.certs.find(c=>{const s=getStudent(c.studentId);return s.name&&s.name.toLowerCase().includes(q.toLowerCase());});
+  const el=document.getElementById('cl-result');
+  if(!cc){el.innerHTML=`<div style="color:#A32D2D;padding:10px 0;font-size:13px"><i class="ti ti-alert-circle" style="font-size:16px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i>Không tìm thấy chứng chỉ phù hợp.</div>`;return;}
+  const s=getStudent(cc.studentId);const c=getCourse(s.course);const issuer=getStaff(cc.issuerId);
+  el.innerHTML=`
+    <div class="info-box">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <i class="ti ti-circle-check" style="font-size:20px;color:var(--color-text-success)" aria-hidden="true"></i>
+        <div style="font-size:13px;font-weight:500;color:var(--color-text-success)">Chứng chỉ hợp lệ và còn hiệu lực</div>
+      </div>
+      <div class="dp-grid">
+        ${[['Số chứng chỉ',`<span class="mono">${cc.no}</span>`],['Họ và tên',s.name],['Ngày sinh',s.dob],['CCCD',`<span class="mono">${s.cccd}</span>`],['Khoá học',c.name||s.course],['Điểm thi',`<span style="font-weight:500;color:#0C447C">${s.score}/10</span>`],['Ngày cấp',cc.date],['Hiệu lực đến',`<span style="color:#0F6E56">${cc.expire}</span>`],['Tỉnh cấp',cc.city],['Cơ quan cấp','Viện NC&ĐT BĐS'],['Người ký duyệt',`${issuer.degree} ${issuer.name}`],['Tình trạng',bdg('Còn hiệu lực','bt')]].map(([l,v])=>`<div><div class="dp-l">${l}</div><div class="dp-v">${v}</div></div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function rStaff(){
+  const q=(document.getElementById('stf-q')||{}).value||'';
+  let data=DB.staff.filter(s=>!q||s.name.toLowerCase().includes(q.toLowerCase())||s.dept.toLowerCase().includes(q.toLowerCase())||s.spec.toLowerCase().includes(q.toLowerCase()));
+  const deptCount={};DB.staff.forEach(s=>deptCount[s.dept]=(deptCount[s.dept]||0)+1);
+  const typeCount={};DB.staff.forEach(s=>typeCount[s.type]=(typeCount[s.type]||0)+1);
+  document.getElementById('p-staff').innerHTML=`
+    <div class="pg-t">Cán bộ &amp; Giảng viên</div><div class="pg-s">Nhân sự cơ hữu và thỉnh giảng toàn viện</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng nhân sự</div><div class="sv">${DB.staff.length}</div></div>
+      ${Object.entries(typeCount).map(([t,n])=>`<div class="sc"><div class="sl">${t}</div><div class="sv">${n}</div></div>`).join('')}
+      <div class="sc"><div class="sl">Phòng ban</div><div class="sv">${Object.keys(deptCount).length}</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách nhân sự</div>
+        <div class="ca">
+          <input class="sb-inp" id="stf-q" placeholder="Tên / Phòng ban..." value="${q}" oninput="rStaff()" style="width:160px">
+          <button class="btn pr"><i class="ti ti-plus" aria-hidden="true"></i> Thêm nhân sự</button>
+        </div>
+      </div>
+      <div class="tw"><table><thead><tr><th>Nhân sự</th><th>Mã NV</th><th>Chức danh</th><th>Phòng ban</th><th>Chuyên môn</th><th>Học hàm/vị</th><th>Loại HĐ</th><th>Email</th><th></th></tr></thead><tbody>
+      ${data.map(s=>`<tr>
+        <td>${avHtml(s)}${s.name}</td>
+        <td class="mono">${s.id}</td>
+        <td>${s.role}</td>
+        <td>${s.dept}</td>
+        <td>${s.spec}</td>
+        <td>${bdg(s.degree,'bb')}</td>
+        <td>${sBdg(s.type)}</td>
+        <td style="font-size:11px;color:var(--color-text-secondary)">${s.email}</td>
+        <td><button class="btn sm" onclick="showStaffDetail('${s.id}')"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+      </tr>`).join('')}
+      </tbody></table></div>
+    </div>
+    <div id="stf-det"></div>`;
+}
+
+function showStaffDetail(id){
+  const s=getStaff(id);
+  const courses=DB.courses.filter(c=>c.teacher===id);
+  const exams=DB.exams.filter(e=>e.examinerId===id);
+  const research=DB.research.filter(r=>r.leadId===id);
+  const contract=DB.contracts.find(c=>c.staffId===id)||{};
+  const leaveRec=DB.leave.filter(l=>l.staffId===id);
+  const det=document.getElementById('stf-det');
+  det.innerHTML=`
+    <div class="det-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:10px"><span class="av ${s.avc}" style="width:36px;height:36px;font-size:13px">${s.av}</span><div><div style="font-size:14px;font-weight:500">${s.degree} ${s.name}</div><div style="font-size:11px;color:var(--color-text-secondary)">${s.role} · ${s.dept}</div></div></div>
+        <button class="btn sm" onclick="document.getElementById('stf-det').innerHTML=''"><i class="ti ti-x" aria-hidden="true"></i></button>
+      </div>
+      <div class="dp-grid">
+        ${[['Mã NV',`<span class="mono">${s.id}</span>`],['Chuyên môn',s.spec],['Loại HĐ',sBdg(s.type)],['Ngày vào làm',s.joinDate],['Điện thoại',s.phone],['Email',`<span style="font-size:11px">${s.email}</span>`],s.salary?['Lương cơ bản',fmt(s.salary)]:null,contract.type?['Hợp đồng',contract.type]:null,contract.end?['HĐ đến',contract.end]:null,contract.status?['Trạng thái HĐ',sBdg(contract.status)]:null].filter(Boolean).map(([l,v])=>`<div><div class="dp-l">${l}</div><div class="dp-v">${v}</div></div>`).join('')}
+      </div>
+      ${courses.length?`<div style="font-size:12px;font-weight:500;margin-bottom:8px">Khoá học phụ trách (${courses.length})</div>
+      <div class="tw"><table><thead><tr><th>Mã khoá</th><th>Tên khoá</th><th>Chi nhánh</th><th>Sĩ số</th><th>Trạng thái</th></tr></thead><tbody>
+      ${courses.map(c=>{const b=getBranch(c.branch);return`<tr><td class="mono"><span class="lnk" onclick="showCourseDetail('${c.id}')">${c.id}</span></td><td>${c.name}</td><td>${b.name}</td><td>${coursePct(c)}</td><td>${sBdg(c.status)}</td></tr>`;}).join('')}
+      </tbody></table></div>`:''}
+      ${research.length?`<div style="font-size:12px;font-weight:500;margin:10px 0 8px">Đề tài nghiên cứu (${research.length})</div>
+      <div class="tw"><table><thead><tr><th>Mã ĐT</th><th>Tên đề tài</th><th>Tiến độ</th><th>Trạng thái</th></tr></thead><tbody>
+      ${research.map(r=>`<tr><td class="mono">${r.id}</td><td style="font-size:12px">${r.title.substring(0,40)}</td><td>${pbar(r.progress,'#0F6E56')}</td><td>${sBdg(r.status)}</td></tr>`).join('')}
+      </tbody></table></div>`:''}
+      ${leaveRec.length?`<div style="font-size:12px;font-weight:500;margin:10px 0 8px">Đơn nghỉ phép</div>
+      <div class="tw"><table><thead><tr><th>Loại</th><th>Từ</th><th>Đến</th><th>Số ngày</th><th>Lý do</th><th>Trạng thái</th></tr></thead><tbody>
+      ${leaveRec.map(l=>`<tr><td>${l.type}</td><td>${l.from}</td><td>${l.to}</td><td>${l.days}</td><td style="font-size:11px">${l.reason}</td><td>${sBdg(l.status)}</td></tr>`).join('')}
+      </tbody></table></div>`:''}
+    </div>`;
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function rHR(){
+  const pending=DB.leave.filter(l=>l.status==='Chờ duyệt');
+  const expiring=DB.contracts.filter(c=>c.status==='Sắp hết hạn');
+  document.getElementById('p-hr').innerHTML=`
+    <div class="pg-t">Quản lý nhân sự (HR)</div><div class="pg-s">Hợp đồng, nghỉ phép, đánh giá hiệu suất</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng biên chế</div><div class="sv">${DB.staff.length}</div></div>
+      <div class="sc"><div class="sl">HĐ sắp hết hạn</div><div class="sv" style="color:#854F0B">${expiring.length}</div></div>
+      <div class="sc"><div class="sl">Đơn nghỉ chờ duyệt</div><div class="sv">${pending.length}</div></div>
+      <div class="sc"><div class="sl">Tổng quỹ lương/tháng</div><div class="sv">${fmtM(DB.staff.filter(s=>s.salary>0).reduce((a,s)=>a+s.salary,0))}</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">Hợp đồng lao động</div><button class="btn pr sm"><i class="ti ti-plus" aria-hidden="true"></i> Thêm HĐ</button></div>
+        <div class="tw"><table><thead><tr><th>Nhân sự</th><th>Loại HĐ</th><th>Bắt đầu</th><th>Kết thúc</th><th>Lương CB</th><th>Trạng thái</th></tr></thead><tbody>
+        ${DB.contracts.map(c=>{const s=getStaff(c.staffId);return`<tr>
+          <td>${avHtml(s)}<span class="lnk" onclick="showStaffDetail('${s.id}')">${s.name}</span></td>
+          <td>${bdg(c.type,'bb')}</td>
+          <td>${c.start}</td>
+          <td style="color:${c.end==='—'?'var(--color-text-tertiary)':c.status==='Sắp hết hạn'?'#A32D2D':'var(--color-text-primary)'}">${c.end}</td>
+          <td style="font-size:11px">${s.salary?fmt(s.salary):'Theo HĐ'}</td>
+          <td>${sBdg(c.status)}</td>
+        </tr>`;}).join('')}
+        </tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">Đơn nghỉ phép</div><button class="btn pr sm"><i class="ti ti-plus" aria-hidden="true"></i> Tạo đơn</button></div>
+        <div class="tw"><table><thead><tr><th>Nhân sự</th><th>Loại</th><th>Ngày nghỉ</th><th>Số ngày</th><th>Trạng thái</th></tr></thead><tbody>
+        ${DB.leave.map(l=>{const s=getStaff(l.staffId);return`<tr>
+          <td>${avHtml(s)}${s.name}</td>
+          <td style="font-size:11px">${l.type}</td>
+          <td style="font-size:11px">${l.from} → ${l.to}</td>
+          <td style="text-align:center">${l.days}</td>
+          <td>${sBdg(l.status)} ${l.status==='Chờ duyệt'?`<button class="btn sm" style="margin-left:4px" onclick="approveLeave('${l.staffId}')">Duyệt</button>`:''}</td>
+        </tr>`;}).join('')}
+        </tbody></table></div>
+      </div>
+    </div>`;
+}
+function approveLeave(staffId){
+  const l=DB.leave.find(x=>x.staffId===staffId&&x.status==='Chờ duyệt');
+  if(l)l.status='Đã duyệt';
+  rHR();
+}
+
+function rFinance(){
+  const thu=DB.txns.filter(t=>t.type==='Thu');
+  const chi=DB.txns.filter(t=>t.type==='Chi');
+  const totalThu=thu.reduce((a,t)=>a+t.amount,0);
+  const totalChi=chi.reduce((a,t)=>a+t.amount,0);
+  const margin=Math.round((totalThu-totalChi)/totalThu*100);
+  const incomeBycat={};thu.forEach(t=>incomeBycat[t.cat]=(incomeBycat[t.cat]||0)+t.amount);
+  const chiBycat={};chi.forEach(t=>chiBycat[t.cat]=(chiBycat[t.cat]||0)+t.amount);
+  const chiCols=['#993C1D','#854F0B','#534AB7','#185FA5','#3B6D11'];
+  document.getElementById('p-finance').innerHTML=`
+    <div class="pg-t">Quản lý Thu – Chi</div><div class="pg-s">Tài chính tháng 5/2025 — Dữ liệu thực từ hệ thống</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng thu T5</div><div class="sv" style="color:#0F6E56">${fmtM(totalThu)}</div><div class="ss up">+14% tháng trước</div></div>
+      <div class="sc"><div class="sl">Tổng chi T5</div><div class="sv" style="color:#993C1D">${fmtM(totalChi)}</div></div>
+      <div class="sc"><div class="sl">Lợi nhuận</div><div class="sv">${fmtM(totalThu-totalChi)}</div><div class="ss up">Biên LN ${margin}%</div></div>
+      <div class="sc"><div class="sl">HP còn nợ (thực)</div><div class="sv" style="color:#854F0B">${fmtM(DB.students.reduce((a,s)=>a+(s.fee-s.paid),0))}</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">Cơ cấu thu (${fmtM(totalThu)})</div></div>
+        <div style="padding:12px">
+          ${Object.entries(incomeBycat).sort((a,b)=>b[1]-a[1]).map(([cat,amt])=>{const pct=Math.round(amt/totalThu*100);return`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:90px;font-size:11px;color:var(--color-text-secondary)">${cat}</div><div style="flex:1"><div class="pbar"><div class="pf" style="width:${pct}%;background:#0F6E56"></div></div></div><div style="font-size:12px;font-weight:500;min-width:65px;text-align:right">${fmtM(amt)}</div></div>`;}).join('')}
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">Cơ cấu chi (${fmtM(totalChi)})</div></div>
+        <div style="padding:12px">
+          ${Object.entries(chiBycat).sort((a,b)=>b[1]-a[1]).map(([cat,amt],i)=>{const pct=Math.round(amt/totalChi*100);return`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:90px;font-size:11px;color:var(--color-text-secondary)">${cat}</div><div style="flex:1"><div class="pbar"><div class="pf" style="width:${pct}%;background:${chiCols[i%chiCols.length]}"></div></div></div><div style="font-size:12px;font-weight:500;min-width:65px;text-align:right">${fmtM(amt)}</div></div>`;}).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Sổ giao dịch tháng 5/2025</div><button class="btn pr" onclick="showAddTxnModal()"><i class="ti ti-plus" aria-hidden="true"></i> Ghi nhận GD</button></div>
+      <div class="tw"><table><thead><tr><th>Mã GD</th><th>Ngày</th><th>Loại</th><th>Danh mục</th><th>Mô tả</th><th>Số tiền</th><th>Tham chiếu</th><th>Trạng thái</th></tr></thead><tbody>
+      ${DB.txns.map(t=>`<tr>
+        <td class="mono">${t.id}</td>
+        <td>${t.date}</td>
+        <td>${bdg(t.type,t.type==='Thu'?'bt':'bc')}</td>
+        <td>${t.cat}</td>
+        <td style="font-size:11px">${t.desc}</td>
+        <td style="font-weight:500;color:${t.type==='Thu'?'#0F6E56':'#993C1D'}">${t.type==='Thu'?'+':'-'}${fmtM(t.amount)}</td>
+        <td class="mono" style="font-size:10px">${t.ref}</td>
+        <td>${sBdg(t.status)}</td>
+      </tr>`).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function showAddTxnModal(){
+  modal('addtxn',`
+    <div class="mt"><i class="ti ti-coin" style="font-size:18px" aria-hidden="true"></i> Ghi nhận giao dịch</div>
+    <div class="fr"><div class="fg"><label class="fl">Loại</label><select class="fi" id="nt-type"><option>Thu</option><option>Chi</option></select></div><div class="fg"><label class="fl">Danh mục</label><select class="fi" id="nt-cat"><option>Học phí</option><option>Phí CC</option><option>Phí ôn thi</option><option>Lương</option><option>Cơ sở</option><option>In ấn</option><option>Marketing</option><option>Lương GV thỉnh</option><option>Khác</option></select></div></div>
+    <div class="fr"><div class="fg"><label class="fl">Số tiền (VNĐ)</label><input class="fi" type="number" id="nt-amt" placeholder="10000000"></div><div class="fg"><label class="fl">Ngày</label><input class="fi" type="date" id="nt-date"></div></div>
+    <div class="fg" style="margin-bottom:10px"><label class="fl">Mô tả</label><input class="fi" id="nt-desc" placeholder="Mô tả giao dịch..."></div>
+    <div class="fg" style="margin-bottom:10px"><label class="fl">Tham chiếu</label><input class="fi" id="nt-ref" placeholder="K15-HCM / P.HC-NS..."></div>
+    <div class="mf"><button class="btn" onclick="closeM('addtxn')">Huỷ</button><button class="btn pr" onclick="addTxn()"><i class="ti ti-check" aria-hidden="true"></i> Lưu</button></div>`);
+}
+function addTxn(){
+  const amt=+document.getElementById('nt-amt').value;
+  if(!amt){alert('Vui lòng nhập số tiền');return;}
+  const newId='PT'+(DB.txns.length+1).toString().padStart(3,'0');
+  DB.txns.unshift({id:newId,date:document.getElementById('nt-date').value||'06/05/2025',type:document.getElementById('nt-type').value,cat:document.getElementById('nt-cat').value,desc:document.getElementById('nt-desc').value,amount:amt,ref:document.getElementById('nt-ref').value,status:'Chờ duyệt'});
+  closeM('addtxn');rFinance();
+}
+
+function rTuition(){
+  const f=(document.getElementById('tf-filter')||{}).value||'';
+  let data=DB.students;
+  if(f==='no')data=data.filter(s=>s.paid<s.fee);
+  if(f==='full')data=data.filter(s=>s.paid>=s.fee);
+  const totalFee=DB.students.reduce((a,s)=>a+s.fee,0);
+  const totalPaid=DB.students.reduce((a,s)=>a+s.paid,0);
+  document.getElementById('p-tuition').innerHTML=`
+    <div class="pg-t">Quản lý học phí</div><div class="pg-s">Thu học phí và công nợ từng học viên</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng học phí phải thu</div><div class="sv">${fmtM(totalFee)}</div></div>
+      <div class="sc"><div class="sl">Đã thu</div><div class="sv" style="color:#0F6E56">${fmtM(totalPaid)}</div><div class="ss up">${Math.round(totalPaid/totalFee*100)}% tỉ lệ thu</div></div>
+      <div class="sc"><div class="sl">Còn nợ</div><div class="sv" style="color:#A32D2D">${fmtM(totalFee-totalPaid)}</div></div>
+      <div class="sc"><div class="sl">HV nợ học phí</div><div class="sv">${DB.students.filter(s=>s.paid<s.fee).length}</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Tình trạng học phí</div>
+        <select class="sb-inp" id="tf-filter" onchange="rTuition()">
+          <option value="">Tất cả</option>
+          <option value="no" ${f==='no'?'selected':''}>Đang nợ</option>
+          <option value="full" ${f==='full'?'selected':''}>Đã đóng đủ</option>
+        </select>
+      </div>
+      <div class="tw"><table><thead><tr><th>Học viên</th><th>Khoá học</th><th>Học phí</th><th>Đã đóng</th><th>Còn nợ</th><th>Tỉ lệ</th><th>Tình trạng</th></tr></thead><tbody>
+      ${data.map(s=>{const debt=s.fee-s.paid;const pct=Math.round(s.paid/s.fee*100);const col=pct===100?'#3B6D11':'#185FA5';return`<tr>
+        <td>${avHtml(s)}<span class="lnk" onclick="showStudentDetail('${s.id}')">${s.name}</span></td>
+        <td><span class="lnk" onclick="showCourseDetail('${s.course}')">${s.course}</span></td>
+        <td style="font-size:11px">${fmt(s.fee)}</td>
+        <td style="color:#0F6E56;font-size:11px">${fmt(s.paid)}</td>
+        <td style="color:${debt>0?'#A32D2D':'var(--color-text-tertiary)'};font-size:11px;font-weight:${debt>0?500:400}">${debt>0?fmt(debt):'—'}</td>
+        <td>${pbar(pct,col)}</td>
+        <td>${bdg(pct===100?'Đóng đủ':pct===0?'Chưa đóng':'Đóng một phần',pct===100?'bg':pct===0?'br':'ba')}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function rBranches(){
+  document.getElementById('p-branches').innerHTML=`
+    <div class="pg-t">Chi nhánh &amp; Tỉnh thành</div><div class="pg-s">Mạng lưới hoạt động toàn quốc</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng chi nhánh</div><div class="sv">${DB.branches.length}</div></div>
+      <div class="sc"><div class="sl">Đang hoạt động</div><div class="sv">${DB.branches.filter(b=>b.status==='Hoạt động').length}</div></div>
+      <div class="sc"><div class="sl">Tỉnh thành</div><div class="sv">${[...new Set(DB.branches.map(b=>b.city))].length}</div></div>
+      <div class="sc"><div class="sl">Tổng phòng học</div><div class="sv">${DB.branches.reduce((a,b)=>a+b.rooms,0)}</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách chi nhánh</div><button class="btn pr"><i class="ti ti-plus" aria-hidden="true"></i> Thêm chi nhánh</button></div>
+      <div class="tw"><table><thead><tr><th>Mã CN</th><th>Chi nhánh</th><th>Địa chỉ</th><th>Phụ trách</th><th>Liên hệ</th><th>Email</th><th>Khoá HĐ</th><th>HV đang học</th><th>Trạng thái</th><th></th></tr></thead><tbody>
+      ${DB.branches.map(b=>{const activeCrs=DB.courses.filter(c=>c.branch===b.id&&c.status==='Đang học').length;const hvCount=DB.students.filter(s=>{const c=getCourse(s.course);return c.branch===b.id&&s.status==='Đang học';}).length;return`<tr>
+        <td class="mono">${b.id}</td>
+        <td style="font-weight:500">${b.name}</td>
+        <td style="font-size:11px">${b.addr}</td>
+        <td>${b.head}</td>
+        <td style="font-size:11px">${b.tel}</td>
+        <td style="font-size:11px;color:var(--color-text-secondary)">${b.email}</td>
+        <td style="text-align:center">${activeCrs}</td>
+        <td style="text-align:center;font-weight:500">${hvCount}</td>
+        <td>${sBdg(b.status)}</td>
+        <td><button class="btn sm" onclick="showBranchDetail('${b.id}')"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>
+    <div id="br-det"></div>`;
+}
+
+function showBranchDetail(id){
+  const b=getBranch(id);
+  const courses=DB.courses.filter(c=>c.branch===id);
+  const students=DB.students.filter(s=>DB.courses.some(c=>c.id===s.course&&c.branch===id));
+  const activeHV=students.filter(s=>s.status==='Đang học').length;
+  const revenue=students.reduce((a,s)=>a+s.paid,0);
+  document.getElementById('br-det').innerHTML=`
+    <div class="det-card">
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+        <div style="font-size:14px;font-weight:500">${b.name} – ${b.city}</div>
+        <button class="btn sm" onclick="document.getElementById('br-det').innerHTML=''"><i class="ti ti-x" aria-hidden="true"></i></button>
+      </div>
+      <div class="dp-grid">
+        ${[['Địa chỉ',b.addr],['Phụ trách',b.head],['Điện thoại',b.tel],['Email',`<span style="font-size:11px">${b.email}</span>`],['Phòng học',`${b.rooms} phòng`],['Tổng khoá học',`${courses.length} khoá`],['HV đang học',`${activeHV} học viên`],['Doanh thu thực thu',fmtM(revenue)],['Trạng thái',sBdg(b.status)]].map(([l,v])=>`<div><div class="dp-l">${l}</div><div class="dp-v">${v}</div></div>`).join('')}
+      </div>
+      <div style="font-size:12px;font-weight:500;margin-bottom:8px">Khoá học (${courses.length})</div>
+      <div class="tw"><table><thead><tr><th>Mã</th><th>Tên khoá</th><th>GV</th><th>Sĩ số</th><th>Học phí</th><th>Trạng thái</th></tr></thead><tbody>
+      ${courses.map(c=>{const t=getStaff(c.teacher);return`<tr><td class="mono"><span class="lnk" onclick="showCourseDetail('${c.id}')">${c.id}</span></td><td>${c.name}</td><td style="font-size:11px">${t.degree} ${t.name}</td><td>${coursePct(c)}</td><td style="font-size:11px">${fmt(c.fee)}</td><td>${sBdg(c.status)}</td></tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+  document.getElementById('br-det').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function rPartners(){
+  document.getElementById('p-partners').innerHTML=`
+    <div class="pg-t">Đối tác liên kết</div><div class="pg-s">Doanh nghiệp BĐS, hiệp hội và tổ chức hợp tác</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng đối tác</div><div class="sv">${DB.partners.length}</div></div>
+      <div class="sc"><div class="sl">HV được giới thiệu</div><div class="sv">${DB.students.filter(s=>s.partner).length}</div></div>
+      <div class="sc"><div class="sl">Đối tác hoạt động</div><div class="sv">${DB.partners.filter(p=>p.status==='Đang hợp tác').length}</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách đối tác</div><button class="btn pr"><i class="ti ti-plus" aria-hidden="true"></i> Thêm đối tác</button></div>
+      <div class="tw"><table><thead><tr><th>Mã</th><th>Tên đối tác</th><th>Loại hình</th><th>Tỉnh thành</th><th>Liên hệ</th><th>Điện thoại</th><th>HV giới thiệu</th><th>Điều khoản HĐ</th><th>Trạng thái</th></tr></thead><tbody>
+      ${DB.partners.map(p=>{const refCount=DB.students.filter(s=>s.partner===p.id).length;return`<tr>
+        <td class="mono">${p.id}</td>
+        <td style="font-weight:500">${p.name}</td>
+        <td>${bdg(p.type,'bb')}</td>
+        <td>${p.city}</td>
+        <td>${p.contact}</td>
+        <td style="font-size:11px">${p.phone}</td>
+        <td style="text-align:center;font-weight:500">${refCount}</td>
+        <td style="font-size:11px">${p.deal}</td>
+        <td>${sBdg(p.status)}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function rResearch(){
+  const totalBudget=DB.research.reduce((a,r)=>a+r.budget,0);
+  const avgProg=Math.round(DB.research.reduce((a,r)=>a+r.progress,0)/DB.research.length);
+  document.getElementById('p-research').innerHTML=`
+    <div class="pg-t">Đề tài nghiên cứu</div><div class="pg-s">Các dự án nghiên cứu khoa học và thị trường BĐS</div>
+    <div class="sg">
+      <div class="sc"><div class="sl">Tổng đề tài</div><div class="sv">${DB.research.length}</div></div>
+      <div class="sc"><div class="sl">Cấp Bộ XD</div><div class="sv">${DB.research.filter(r=>r.level==='Bộ XD').length}</div></div>
+      <div class="sc"><div class="sl">Tổng ngân sách</div><div class="sv">${fmtM(totalBudget)}</div></div>
+      <div class="sc"><div class="sl">Tiến độ TB</div><div class="sv">${avgProg}%</div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Danh sách đề tài</div><button class="btn pr"><i class="ti ti-plus" aria-hidden="true"></i> Đăng ký đề tài</button></div>
+      <div class="tw"><table><thead><tr><th>Mã ĐT</th><th>Tên đề tài</th><th>Chủ nhiệm</th><th>Cấp</th><th>Ngân sách</th><th>Thời gian</th><th>Tiến độ</th><th>Trạng thái</th></tr></thead><tbody>
+      ${DB.research.map(r=>{const lead=getStaff(r.leadId);return`<tr>
+        <td class="mono">${r.id}</td>
+        <td style="font-size:12px;max-width:180px">${r.title}</td>
+        <td><span class="lnk" onclick="showStaffDetail('${r.leadId}')">${lead.degree} ${lead.name}</span></td>
+        <td>${bdg(r.level,r.level==='Bộ XD'?'bb':'bp')}</td>
+        <td style="font-size:11px">${fmtM(r.budget)}</td>
+        <td style="font-size:11px">${r.start} → ${r.end}</td>
+        <td>${pbar(r.progress,'#0F6E56')}</td>
+        <td>${sBdg(r.status)}</td>
+      </tr>`;}).join('')}
+      </tbody></table></div>
+    </div>`;
+}
+
+function rReports(){
+  const totalHV=DB.students.length;
+  const gradHV=DB.students.filter(s=>s.status==='Tốt nghiệp').length;
+  const totalRev=DB.txns.filter(t=>t.type==='Thu').reduce((a,t)=>a+t.amount,0);
+  const totalChi=DB.txns.filter(t=>t.type==='Chi').reduce((a,t)=>a+t.amount,0);
+  const debt=DB.students.reduce((a,s)=>a+(s.fee-s.paid),0);
+  const reports=[
+    {icon:'ti-users',title:'Báo cáo học viên',desc:`${totalHV} HV tổng · ${DB.students.filter(s=>s.status==='Đang học').length} đang học · ${gradHV} tốt nghiệp · ${DB.students.filter(s=>s.status==='Bảo lưu').length} bảo lưu`,c:'bb'},
+    {icon:'ti-coin',title:'Báo cáo tài chính',desc:`Thu: ${fmtM(totalRev)} · Chi: ${fmtM(totalChi)} · LN: ${fmtM(totalRev-totalChi)} · HP nợ: ${fmtM(debt)}`,c:'bt'},
+    {icon:'ti-certificate',title:'Báo cáo chứng chỉ',desc:`${DB.certs.length} CC đã cấp · ${DB.students.filter(s=>s.status==='Tốt nghiệp'&&!s.certId).length} chờ cấp · 47 sắp hết hạn`,c:'bg'},
+    {icon:'ti-id-badge',title:'Báo cáo giảng viên',desc:`${DB.staff.filter(s=>s.dept==='P.Đào tạo').length} GV · ${DB.staff.filter(s=>s.type==='Cơ hữu').length} cơ hữu · ${DB.staff.filter(s=>s.type==='Thỉnh giảng').length} thỉnh giảng`,c:'bp'},
+    {icon:'ti-books',title:'Báo cáo khoá học',desc:`${DB.courses.length} khoá tổng · ${DB.courses.filter(c=>c.status==='Đang học').length} đang học · ${DB.courses.filter(c=>c.status==='Hoàn thành').length} hoàn thành`,c:'ba'},
+    {icon:'ti-map-pin',title:'Báo cáo chi nhánh',desc:`${DB.branches.filter(b=>b.status==='Hoạt động').length} CN HĐ · ${[...new Set(DB.branches.map(b=>b.city))].length} tỉnh thành · ${DB.partners.length} đối tác`,c:'bgr'},
+    {icon:'ti-microscope',title:'Báo cáo nghiên cứu',desc:`${DB.research.length} đề tài · ${DB.research.filter(r=>r.level==='Bộ XD').length} cấp Bộ · NS: ${fmtM(DB.research.reduce((a,r)=>a+r.budget,0))}`,c:'bt'},
+    {icon:'ti-file-text',title:'Báo cáo nhân sự',desc:`${DB.staff.length} CB · ${DB.contracts.filter(c=>c.status==='Sắp hết hạn').length} HĐ sắp hết hạn · ${DB.leave.filter(l=>l.status==='Chờ duyệt').length} đơn nghỉ chờ`,c:'bb'},
+  ];
+  document.getElementById('p-reports').innerHTML=`
+    <div class="pg-t">Báo cáo tổng hợp</div><div class="pg-s">Xuất báo cáo từ dữ liệu thực hệ thống</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px">
+    ${reports.map(r=>`<div class="card"><div style="padding:14px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><i class="ti ${r.icon}" style="font-size:18px;color:var(--color-text-secondary)" aria-hidden="true"></i><div style="font-size:13px;font-weight:500">${r.title}</div></div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;line-height:1.6">${r.desc}</div>
+      <div style="display:flex;gap:6px"><button class="btn sm"><i class="ti ti-file-type-pdf" style="font-size:13px" aria-hidden="true"></i> PDF</button><button class="btn sm"><i class="ti ti-table-export" style="font-size:13px" aria-hidden="true"></i> Excel</button><button class="btn sm"><i class="ti ti-share" style="font-size:13px" aria-hidden="true"></i> Chia sẻ</button></div>
+    </div></div>`).join('')}
+    </div>`;
+}
+
+rDash();
+</script>
